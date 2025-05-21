@@ -1,0 +1,166 @@
+/*
+Project: resume.richknowles.com
+Stack: Next.js + TypeScript + Tailwind CSS
+
+Directory structure:
+```
+/           <- root
+  package.json
+  tsconfig.json
+  next.config.js
+  tailwind.config.js
+  postcss.config.js
+  /public
+    favicon.ico
+    /pdf
+      Rich_Knowles_Resume.pdf    
+  /data
+    resume.json
+  /components
+    Header.tsx
+    Section.tsx
+    ExperienceItem.tsx
+    CompetencyList.tsx
+  /pages
+    _app.tsx
+    index.tsx
+    /api
+      resume.ts                <- (optional dynamic JSON endpoint)
+  /styles
+    globals.css
+    resume.css
+```
+
+1. package.json (scripts & deps)
+```json
+{
+  "name": "resume-site",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "tailwindcss": "latest",
+    "postcss": "latest",
+    "autoprefixer": "latest"
+  }
+}
+```
+
+2. tailwind.config.js
+```js
+module.exports = {
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  theme: { extend: {} },
+  plugins: []
+};
+```
+
+3. postcss.config.js
+```js
+module.exports = {
+  plugins: { tailwindcss: {}, autoprefixer: {} }
+};
+```
+
+4. tsconfig.json
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "resolveJsonModule": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
+```
+
+5. /data/resume.json (excerpt)
+```json
+{
+  "basics": { "name": "Rich Knowles", "location": "Elgin, IL", "phone": "847-857-8813", "email": "rich@itwerks.net", "linkedin": "https://linkedin.com/in/richknowles", "github": "https://github.com/richknowles" },
+  "summary": "Dynamic IT leader with over 12 years driving systems engineering...",
+  "competencies": ["Master Data Management (MDM)", "Agile/SAFe & CI/CD", ...],
+  "experience": [{ "company": "iTWerks", "location": "Elgin, IL", "role": "Sr. System Administrator & Product Lead", "dates": "Apr 2013 – Present", "highlights": ["Architected...","Spearheaded..."] }, ...],
+  "education": [{ "institution": "SAFe Agilist", "dates": "expected May 2025" }, ...]
+}
+```
+
+6. components/Header.tsx
+```tsx
+import { FC } from 'react';
+import Link from 'next/link';
+import resume from '../data/resume.json';
+
+const Header: FC = () => (
+  <header className="py-6 text-center">
+    <h1 className="text-4xl font-bold">{resume.basics.name}</h1>
+    <p className="mt-2">
+      {resume.basics.location} · {resume.basics.phone} · 
+      <Link href={`mailto:${resume.basics.email}`} className="underline">{resume.basics.email}</Link> · 
+      <Link href={resume.basics.linkedin} target="_blank" className="underline">LinkedIn</Link> · 
+      <Link href={resume.basics.github} target="_blank" className="underline">GitHub</Link>
+    </p>
+  </header>
+);
+export default Header;
+```
+
+7. pages/index.tsx
+```tsx
+import { GetStaticProps } from 'next';
+import Header from '../components/Header';
+import Section from '../components/Section';
+import resume from '../data/resume.json';
+
+export const getStaticProps: GetStaticProps = async () => ({ props: { resume } });
+
+const Home = ({ resume }) => (
+  <main className="max-w-3xl mx-auto p-6">
+    <Header />
+    <Section title="Professional Summary">{resume.summary}</Section>
+    <Section title="Core Competencies">
+      <ul className="list-disc ml-5 space-y-1">
+        {resume.competencies.map((c, i) => <li key={i}>{c}</li>)}
+      </ul>
+    </Section>
+    {/* Repeat for Experience, Education, Skills */}
+  </main>
+);
+export default Home;
+```
+
+8. styles/globals.css
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { @apply bg-white text-gray-800 font-sans; }
+@media print { body { color: black; } a { text-decoration: none; color: black; } }
+```
+
+**Next Steps:**
+- Clone this scaffold, run `npm install && npm run dev` to preview.  
+- Customize CSS (e.g. colors, spacing).  
+- Add smooth scrolling, anchor nav, print-friendly tweaks.  
+
+Deployed on Vercel this will be lightning-fast, secure, and easy to update via GitHub pushes.
