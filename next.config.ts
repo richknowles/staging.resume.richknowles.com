@@ -1,10 +1,12 @@
 // next.config.ts
-import { defineConfig } from "next";
+import type { NextConfig } from "next";
 
-export default defineConfig({
-  // point Next at your src/app folder
-  appDir: "src/app",
+const nextConfig: NextConfig = {
+  // tell Next that all of your pages/app/components live in ./src
+  srcDir: "src",
 
-  // …any other config you already have…
+  // (optional) turn on strict mode
   reactStrictMode: true,
-});
+};
+
+export default nextConfig;
