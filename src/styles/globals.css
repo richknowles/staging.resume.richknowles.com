@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* your custom CSS variables */
+:root {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+}

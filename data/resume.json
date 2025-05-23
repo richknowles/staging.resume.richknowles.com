@@ -1,0 +1,102 @@
+{
+  "profile": {
+    "name": "Richard Knowles",
+    "location": "Elgin, IL",
+    "phone": "847-857-8813",
+    "email": "rich@itwerks.net",
+    "linkedin": "https://linkedin.com/in/richknowles",
+    "github": "https://github.com/richknowles",
+    "website": "https://resume.richknowles.com"
+                                                                                                                                                                                                                                                                                                                      },
+  "summary": "Senior IT professional with 25+ years of industry experience, including 12+ years leading enterprise infrastructure, automation, and Master Data Management (MDM) initiatives. Proven track record shaping Agile/SAFe product delivery, securing hybrid cloud environments, and executing at scale across diverse technical ecosystems. Trusted cross-functional leader known for aligning engineering with business impact.",
+  "coreCompetencies": [
+    "Master Data Management (MDM)",
+    "Agile/SAFe & CI/CD",
+    "Cross-Functional Leadership",
+    "Data Governance & Quality Assurance",
+    "Stakeholder Engagement",
+    "Infrastructure Architecture",
+    "Cloud Platforms: Azure · AWS · GCP",
+    "Virtualization & Backup: Linux · VMware · Veeam",
+    "Automation: Python · VBScript · Shell Scripting",
+    "DevOps Tools: Azure DevOps · ServiceNow · Miro"
+  ],
+  "experience": [
+    {
+      "company": "iTWerks",
+      "location": "Elgin, IL",
+      "title": "Sr. System Administrator & Product Lead",
+      "startDate": "2013-04",
+      "endDate": "Present",
+      "bullets": [
+        "Architected and launched a multi-tenant RMM platform on AWS & Azure for 40+ clients, defining roadmap and backlog in Azure DevOps with infrastructure-as-code best practices.",
+        "Spearheaded Agile/Scrum ceremonies and implemented CI/CD pipelines using Azure DevOps, reducing release cycles by 30%.",
+        "Embedded SentinelONE through automated deployment scripts across hybrid environments, reducing incident response time by 40%.",
+        "Built and automated a proprietary RMM solution using Python and Shell scripting, standardizing cloud-based monitoring and proactive alerting workflows.",
+        "Developed Veeam-based backup/DR processes covering 100+ systems, ensuring 1-hour RTO and 15-minute RPO compliance.",
+        "Onboarded 44 enterprise clients with custom documentation, video walkthroughs, and live remote workshops to support self-service adoption.",
+        "Designed real-time dashboards using Power BI and Azure Monitor to track performance KPIs and inform iterative product improvements."
+      ]
+    },
+    {
+      "company": "Structured Communications, Inc. & Anstar Corp.",
+      "location": "IL",
+      "title": "Project Manager",
+      "startDate": "2007-01",
+      "endDate": "2013-04",
+      "bullets": [
+        "Delivered a $30M hospital-wide network and systems infrastructure rollout at Central DuPage Hospital, completing the project 10% under budget and ahead of schedule.",
+        "Decommissioned 560 legacy servers during NYSE datacenter migration, executing phased cutovers with zero unplanned downtime using automated verification scripts.",
+        "Led Agile sprint planning and retrospectives across distributed engineering teams, increasing deployment velocity by 20%.",
+        "Oversaw multi-site Cisco network installations and robotics integrations, coordinating vendor teams and internal engineers to meet tight operational deadlines.",
+        "Managed full lifecycle network build-out for IUOE Local 150 HQ, including firewall configuration, VoIP deployment, and secure LAN/WAN setup across 3 facilities."
+      ]
+    },
+    {
+      "company": "Motorola Solutions",
+      "location": "Schaumburg, IL",
+      "title": "Senior Systems Engineer IV",
+      "startDate": "1997-01",
+      "endDate": "2006-06",
+      "bullets": [
+        "Led global hardware standards development, negotiated $2M in vendor savings, and directed Dell image deployment projects that cut system provisioning time in half.",
+        "Promoted to team lead for exceptional delivery and leadership in enterprise IT architecture."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "PortSwigger Web Security Academy",
+      "location": "Remote",
+      "degree": "Ongoing in Information Security",
+      "startDate": "2025-01",
+      "endDate": "Present"
+    },
+    {
+      "institution": "College of DuPage",
+      "location": "Glen Ellyn, IL",
+      "degree": "Some College in Computer Science",
+      "startDate": "1992-09",
+      "endDate": "1995-06"
+    },
+    {
+      "institution": "Vocational School in Aircraft Electronics (USMC)",
+      "location": "Millington, TN",
+      "degree": "Avionics Technician",
+      "startDate": "1994-03",
+      "endDate": "1994-12"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "SAFe Agilist",
+      "date": "2025-05",
+      "status": "Expected"
+    }
+  ],
+  "technicalSkills": [
+    "Linux", "VMware", "Veeam", "SentinelONE", "Active Directory", "Cisco", "Barracuda", "SonicWall",
+    "AWS", "Azure", "GCP", "Python", "VBScript", "Shell Scripting", "MySQL", "SQL Server",
+    "Git", "Docker"
+  ]
+}
