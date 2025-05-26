@@ -11,7 +11,7 @@ import Education from "../components/Education";
 import Footer from "../components/Footer";
 
 export default function Page() {
-  const { profile, summary, coreCompetencies, experience, education, certifications, technicalSkills } = resume;
+  const { profile, summary, coreCompetencies, experience, education, technicalSkills } = resume;
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
@@ -56,7 +56,7 @@ export default function Page() {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
       >
-        <Education schools={education} certs={certifications} skills={technicalSkills} />
+        <Education schools={education} skills={technicalSkills} />
       </motion.section>
 
       <Footer />
