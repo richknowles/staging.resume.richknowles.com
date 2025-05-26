@@ -26,18 +26,19 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and Push Docker Image
+      - name: Build and Push ARM‑only Docker Image
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
           push: true
+          platforms: linux/arm64
           tags: rightontron/resume-site:latest
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment: production     # pulls in your SSH_HOST, SSH_USER & SSH_KEY
+    environment: production
     steps:
       - uses: actions/checkout@v3
 
@@ -57,5 +58,8 @@ jobs:
           script: |
             docker pull rightontron/resume-site:latest
             docker rm -f resume-site || true
-            docker run -d --name resume-site -p 3001:3001 rightontron/resume-site:latest
+            docker run -d \
+              --name resume-site \
+              -p 3001:3001 \
+              rightontron/resume-site:latest
             sudo nginx -t && sudo systemctl reload nginx
