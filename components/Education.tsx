@@ -32,8 +32,6 @@ export default function Education({ schools, skills }: EducationProps) {
         </div>
       ))}
 
-      </ul>
-
       <h3 className="font-semibold mt-6">Technical Skills</h3>
       <p>{skills.join(" · ")}</p>
     </div>
