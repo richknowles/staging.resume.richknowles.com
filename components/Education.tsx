@@ -8,23 +8,16 @@ interface School {
   endDate: string;
 }
 
-interface Cert {
-  name: string;
-  date: string;
-  status?: string;
-}
-
 interface EducationProps {
   schools: School[];
-  certs: Cert[];
   skills: string[];
 }
 
-export default function Education({ schools, certs, skills }: EducationProps) {
+export default function Education({ schools, skills }: EducationProps) {
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-4">
-        Education & Certifications
+        Education
       </h2>
 
       {schools.map((s) => (
@@ -39,14 +32,6 @@ export default function Education({ schools, certs, skills }: EducationProps) {
         </div>
       ))}
 
-      <h3 className="font-semibold mt-6">Certifications</h3>
-      <ul className="list-disc list-inside">
-        {certs.map((c) => (
-          <li key={c.name}>
-            {c.name} – {c.date}
-            {c.status ? ` (${c.status})` : ""}
-          </li>
-        ))}
       </ul>
 
       <h3 className="font-semibold mt-6">Technical Skills</h3>
