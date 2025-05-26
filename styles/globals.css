@@ -6,6 +6,8 @@
 :root {
   --background: #0f172a;
   --foreground: #e2e8f0;
+  --accent: #dc2626;
+  --accent-rgb: 220,38,38;
 }
 
 /* Fade & scale animation for hero photo */
@@ -45,9 +47,11 @@ a, button {
 a:hover, button:hover {
   transform: translateY(-2px);
   text-decoration: underline;
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
-/* Subtle rotating gradient behind .hero sections */
+/* Hero background: rotating + pulsing radial gradient */
 .hero {
   position: relative;
   overflow: hidden;
@@ -55,16 +59,48 @@ a:hover, button:hover {
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(220,38,38,0.15), transparent 70%);
-  animation: rotateBg 20s linear infinite;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--accent-rgb),0.3),
+    transparent 60%
+  );
+  animation:
+    rotateBg 20s linear infinite,
+    pulseBg 6s ease-in-out infinite;
   z-index: -1;
 }
 
 @keyframes rotateBg {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+/* Pulse opacity under hero to draw attention */
+@keyframes pulseBg {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.7; }
+}
+
+/* Gradient-text utility for headings */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    #f87171,
+    var(--accent)
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 6s ease infinite;
 }
