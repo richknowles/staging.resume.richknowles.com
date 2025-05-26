@@ -23,7 +23,7 @@
   animation: fadeInScale 800ms ease-out both;
 }
 
-/* Fade‐up animation for headings & sections */
+/* Fade-up animation for headings & sections */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -45,4 +45,26 @@ a, button {
 a:hover, button:hover {
   transform: translateY(-2px);
   text-decoration: underline;
+}
+
+/* Subtle rotating gradient behind .hero sections */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(220,38,38,0.15), transparent 70%);
+  animation: rotateBg 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
