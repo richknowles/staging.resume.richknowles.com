@@ -56,7 +56,7 @@
       ]
     },
     {
-      "company": "Motorola Solutions",
+      "company": "Motorola Inc.",
       "location": "Schaumburg, IL",
       "title": "Team Lead, Asset Manager, Systems Architect",
       "startDate": "1997-01",
@@ -93,9 +93,7 @@
       "endDate": ""
     }
   ],
-
-  "certifications": []
-
+  "certifications": [],
   "technicalSkills": [
     "Linux",
     "VMware",
@@ -123,5 +121,4 @@
     "SSL/TLS Automation",
     "API Architecture"
   ],
-  "certifications": []
 }
