@@ -15,11 +15,14 @@ interface Profile {
 export default function Header({ profile }: { profile: Profile }) {
   return (
     <header className="hero relative overflow-hidden text-center py-8">
-      <img
-        src={profile.picture || "/portrait.jpg"}
-        alt={profile.name}
-        className="hero-photo w-48 h-48 mx-auto rounded-full shadow-lg mb-6"
-      />
+      {/* Avatar wrapper preserves square shape; inner <img> won’t be distorted */}
+      <div className="hero-photo w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-6">
+        <img
+          src={profile.picture || "/portrait.jpg"}
+          alt={profile.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       <motion.h1
         className="text-4xl font-bold"
