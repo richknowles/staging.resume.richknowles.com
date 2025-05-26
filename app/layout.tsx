@@ -1,12 +1,9 @@
-"use client";
-
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// app/layout.tsx
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
+import AOSWrapper from "../components/AOSWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,15 +26,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Initialize scroll-triggered animations
-  useEffect(() => {
-    AOS.init({ duration: 600, once: true });
-  }, []);
-
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-foreground antialiased">
-        {children}
+        {/* Client-side wrapper to initialize AOS animations */}
+        <AOSWrapper>{children}</AOSWrapper>
       </body>
     </html>
   );
