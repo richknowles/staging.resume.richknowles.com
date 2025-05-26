@@ -1,25 +1,27 @@
 {
   "profile": {
-    "name": "Richard Knowles",
+    "name": "Rich Knowles",
     "location": "Elgin, IL",
     "phone": "847-857-8813",
     "email": "rich@itwerks.net",
-    "linkedin": "https://linkedin.com/in/richknowles",
-    "github": "https://github.com/richknowles",
-    "website": "https://resume.richknowles.com"
-                                                                                                                                                                                                                                                                                                                      },
-  "summary": "Senior IT professional with 25+ years of industry experience, including 12+ years leading enterprise infrastructure, automation, and Master Data Management (MDM) initiatives. Proven track record shaping Agile/SAFe product delivery, securing hybrid cloud environments, and executing at scale across diverse technical ecosystems. Trusted cross-functional leader known for aligning engineering with business impact.",
+    "linkedin": "linkedin.com/in/richknowles",
+    "github": "github.com/richknowles",
+    "website": "resume.richknowles.com"
+  },
+  "summary": "Senior systems administrator and infrastructure architect with 25+ years of experience building, securing, and automating technical environments. Technical lead on large-scale data integrations, custom RMM platforms, SQL migrations, and system rollouts for small businesses and enterprise clients. Built and ran the first Desktop Architecture team at Motorola, leading factory image creation, lease management, and automation tooling. Known for direct, hands‑on work across server, storage, networking, and DNS layers with deep experience supporting mergers and multi‑office setups.",
   "coreCompetencies": [
-    "Master Data Management (MDM)",
-    "Agile/SAFe & CI/CD",
-    "Cross-Functional Leadership",
-    "Data Governance & Quality Assurance",
-    "Stakeholder Engagement",
-    "Infrastructure Architecture",
-    "Cloud Platforms: Azure · AWS · GCP",
-    "Virtualization & Backup: Linux · VMware · Veeam",
-    "Automation: Python · VBScript · Shell Scripting",
-    "DevOps Tools: Azure DevOps · ServiceNow · Miro"
+    "Systems Architecture",
+    "SQL Database Migrations",
+    "Client Infrastructure Integration",
+    "Server Sales & Licensing",
+    "DNS/CloudFlare Setup & Recovery",
+    "Backup & DR Planning",
+    "Virtualization: VMware",
+    "Storage & RAID Design",
+    "Certificate Automation",
+    "Cloud: AWS · Azure · GCP",
+    "Scripting: Python · VBScript · Shell",
+    "Microsoft 365 & Licensing"
   ],
   "experience": [
     {
@@ -29,13 +31,14 @@
       "startDate": "2013-04",
       "endDate": "Present",
       "bullets": [
-        "Architected and launched a multi-tenant RMM platform on AWS & Azure for 40+ clients, defining roadmap and backlog in Azure DevOps with infrastructure-as-code best practices.",
-        "Spearheaded Agile/Scrum ceremonies and implemented CI/CD pipelines using Azure DevOps, reducing release cycles by 30%.",
-        "Embedded SentinelONE through automated deployment scripts across hybrid environments, reducing incident response time by 40%.",
-        "Built and automated a proprietary RMM solution using Python and Shell scripting, standardizing cloud-based monitoring and proactive alerting workflows.",
-        "Developed Veeam-based backup/DR processes covering 100+ systems, ensuring 1-hour RTO and 15-minute RPO compliance.",
-        "Onboarded 44 enterprise clients with custom documentation, video walkthroughs, and live remote workshops to support self-service adoption.",
-        "Designed real-time dashboards using Power BI and Azure Monitor to track performance KPIs and inform iterative product improvements."
+        "Built a WhatsApp-based marketing campaign app from scratch using Python and JavaScript; packaged it for Windows deployment with a signed certificate.",
+        "Built and sold custom RMM platform using open‑source tools, Python, and shell scripting for proactive server/workstation monitoring and automation.",
+        "Migrated and merged SQL databases using SQL Server Management Studio, especially in support of accounting firm acquisitions.",
+        "Acted as technical lead during M&A activity, integrating data from acquired firms into parent environments and resolving access, policy, and identity conflicts.",
+        "Performed server sales, Microsoft 365 setup, and custom licensing for clients as a Dell Reseller and Microsoft Partner.",
+        "Designed and upgraded RAID configurations and storage pools based on capacity planning needs.",
+        "Built DNS records and managed routing across CloudFlare, MXToolBox, and Google Workspace for small businesses; wrote automated scripts for certificate renewals across VPS deployments.",
+        "Deployed and supported SentinelONE, Veeam, VMware, and multi‑WAN firewalls (Cisco, SonicWall, Barracuda) across 40+ client environments."
       ]
     },
     {
@@ -45,22 +48,25 @@
       "startDate": "2007-01",
       "endDate": "2013-04",
       "bullets": [
-        "Delivered a $30M hospital-wide network and systems infrastructure rollout at Central DuPage Hospital, completing the project 10% under budget and ahead of schedule.",
-        "Decommissioned 560 legacy servers during NYSE datacenter migration, executing phased cutovers with zero unplanned downtime using automated verification scripts.",
-        "Led Agile sprint planning and retrospectives across distributed engineering teams, increasing deployment velocity by 20%.",
-        "Oversaw multi-site Cisco network installations and robotics integrations, coordinating vendor teams and internal engineers to meet tight operational deadlines.",
-        "Managed full lifecycle network build-out for IUOE Local 150 HQ, including firewall configuration, VoIP deployment, and secure LAN/WAN setup across 3 facilities."
+        "Delivered a $30M infrastructure rollout at Central DuPage Hospital under budget and ahead of schedule.",
+        "Decommissioned over 560 legacy servers for NYSE datacenter migration with zero downtime using phased transitions.",
+        "Led Cisco network and robotics deployments at multiple client sites.",
+        "Served as project manager for firewall setup, LAN/WAN design, and VoIP integration at IUOE Local 150’s newly constructed Chicago headquarters on the river—delivering a complete, secure infrastructure buildout for the crane operators’ union.",
+        "Managed client coordination, briefings, and sales‑engineering collaboration across multiple business units."
       ]
     },
     {
       "company": "Motorola Solutions",
       "location": "Schaumburg, IL",
-      "title": "Senior Systems Engineer IV",
+      "title": "Team Lead, Asset Manager, Systems Architect",
       "startDate": "1997-01",
       "endDate": "2006-06",
       "bullets": [
-        "Led global hardware standards development, negotiated $2M in vendor savings, and directed Dell image deployment projects that cut system provisioning time in half.",
-        "Promoted to team lead for exceptional delivery and leadership in enterprise IT architecture."
+        "Joined Motorola full‑time after 6 months as a contractor. Promoted to team lead, then Asset Manager for engineering, overseeing 3 storerooms and all tracked hardware across engineering labs.",
+        "Founded and led Motorola’s first Desktop Architecture team — responsible for custom Windows image development (CFI) for HP and Dell, built and deployed at the factory.",
+        "Designed rollout processes for thousands of leased machines, including returns, imaging, and in‑house automation tools tailored per department.",
+        "Recovered over $3M in duplicate lease and maintenance charges by auditing HP contracts line‑by‑line across multiple internal systems — recognized with max bonus, stock awards, and division‑wide honors.",
+        "Served as technical point of contact for software loadout validation, hardware vendor negotiation, and division IT coordination."
       ]
     }
   ],
@@ -68,35 +74,50 @@
     {
       "institution": "PortSwigger Web Security Academy",
       "location": "Remote",
-      "degree": "Ongoing in Information Security",
-      "startDate": "2025-01",
-      "endDate": "Present"
+      "degree": "Ongoing",
+      "startDate": "",
+      "endDate": ""
     },
     {
       "institution": "College of DuPage",
       "location": "Glen Ellyn, IL",
       "degree": "Some College in Computer Science",
-      "startDate": "1992-09",
-      "endDate": "1995-06"
+      "startDate": "",
+      "endDate": ""
     },
     {
-      "institution": "Vocational School in Aircraft Electronics (USMC)",
+      "institution": "USMC",
       "location": "Millington, TN",
-      "degree": "Avionics Technician",
-      "startDate": "1994-03",
-      "endDate": "1994-12"
-    }
-  ],
-  "certifications": [
-    {
-      "name": "SAFe Agilist",
-      "date": "2025-05",
-      "status": "Expected"
+      "degree": "Vocational School in Aircraft Electronics",
+      "startDate": "",
+      "endDate": ""
     }
   ],
   "technicalSkills": [
-    "Linux", "VMware", "Veeam", "SentinelONE", "Active Directory", "Cisco", "Barracuda", "SonicWall",
-    "AWS", "Azure", "GCP", "Python", "VBScript", "Shell Scripting", "MySQL", "SQL Server",
-    "Git", "Docker"
+    "Linux",
+    "VMware",
+    "Veeam",
+    "SentinelONE",
+    "SQL Server",
+    "Active Directory",
+    "Docker",
+    "LXC",
+    "AWS",
+    "Azure",
+    "GCP",
+    "CloudFlare",
+    "Git",
+    "Python",
+    "Shell Scripting",
+    "RAID",
+    "DNS",
+    "Cisco",
+    "SonicWall",
+    "Barracuda",
+    "MySQL",
+    "Microsoft 365",
+    "Windows Server",
+    "SSL/TLS Automation",
+    "API Architecture"
   ]
 }
