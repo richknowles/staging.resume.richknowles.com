@@ -37,24 +37,24 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment: production     # pulls in your SSH_HOST, SSH_USER & SSH_KEY
     steps:
-      - name: Deploy to VPS
+      - uses: actions/checkout@v3
+
+      - name: Debug SSH inputs
+        run: |
+          echo "HOST     = ${{ secrets.SSH_HOST }}"
+          echo "USER     = ${{ secrets.SSH_USER }}"
+          echo "KEY size = $(echo -n "${{ secrets.SSH_KEY }}" | wc -c) bytes"
+
+      - name: Deploy over SSH
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host:     ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          key:      ${{ secrets.SSH_KEY }}
           script: |
-            # Pull the new image
-            docker pull richknowles/resume-site:latest
-
-            # Restart the container
+            docker pull rightontron/resume-site:latest
             docker rm -f resume-site || true
-            docker run -d \
-              --name resume-site \
-              -p 3001:3001 \
-              richknowles/resume-site:latest
-
-            # Reload Nginx
-            sudo nginx -t
-            sudo systemctl reload nginx
+            docker run -d --name resume-site -p 3001:3001 rightontron/resume-site:latest
+            sudo nginx -t && sudo systemctl reload nginx
