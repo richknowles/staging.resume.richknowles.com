@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: richknowles/resume-site:latest
+          tags: rightontron/resume-site:latest
 
   deploy:
     needs: build
