@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import resume from "../data/resume.json";
@@ -11,11 +10,23 @@ import Education from "../components/Education";
 import Footer from "../components/Footer";
 
 export default function Page() {
-  const { profile, summary, coreCompetencies, experience, education, technicalSkills } = resume;
+  const {
+    profile,
+    summary,
+    coreCompetencies,
+    experience,
+    education,
+    technicalSkills,
+  } = resume;
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div
+        className="hero relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <Header profile={profile} />
       </motion.div>
 
@@ -44,7 +55,7 @@ export default function Page() {
         viewport={{ once: true }}
         variants={{
           hidden: {},
-          visible: { transition: { staggerChildren: 0.1 } }
+          visible: { transition: { staggerChildren: 0.1 } },
         }}
       >
         <Experience jobs={experience} />
