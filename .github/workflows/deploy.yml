@@ -3,6 +3,7 @@ name: Build & Deploy Resume Site
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:   # ⬅️ lets you click “Run workflow” from the UI
 
 jobs:
   build:
@@ -37,6 +38,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+            workflow_dispatch:   # manual deploy, too
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.7
