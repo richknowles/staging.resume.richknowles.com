@@ -8,7 +8,7 @@ interface Profile {
   linkedin: string;
   github: string;
   website: string;
-  /** Optional custom portrait URL; falls back to /portrait.jpg */
+  /** Optional custom portrait URL; falls back to /portrait.jpeg */
   picture?: string;
 }
 
@@ -16,7 +16,7 @@ export default function Header({ profile }: { profile: Profile }) {
   return (
     <header className="hero relative overflow-hidden text-center py-8">
       <img
-        src={profile.picture || "/portrait.jpg"}
+        src={profile.picture || "/portrait.jpeg"}
         alt={profile.name}
         className="hero-photo w-48 h-48 mx-auto rounded-full shadow-lg mb-6"
       />
