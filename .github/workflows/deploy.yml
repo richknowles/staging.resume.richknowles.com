@@ -53,6 +53,7 @@ jobs:
           host:     ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key:      ${{ secrets.SSH_KEY }}
+          debug:    true
           script: |
             docker pull rightontron/resume-site:latest
             docker rm -f resume-site || true
