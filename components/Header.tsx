@@ -8,14 +8,13 @@ interface Profile {
   linkedin: string;
   github: string;
   website: string;
-  /** Optional override if you ever want a different path */
   picture?: string;
 }
 
 export default function Header({ profile }: { profile: Profile }) {
   return (
     <header className="hero relative overflow-hidden text-center py-8">
-      {/* fixed-size circular mask */}
+      {/* portrait */}
       <div className="mx-auto mb-6 w-48 h-48 overflow-hidden rounded-full shadow-lg">
         <img
           src={profile.picture || "/portrait.jpg"}
@@ -24,7 +23,12 @@ export default function Header({ profile }: { profile: Profile }) {
         />
       </div>
 
-      {/* your name animates in */}
+      {/* single center-out lightsaber beam */}
+      <div className="lightsaber-container mx-auto mb-6">
+        <div className="beam" />
+      </div>
+
+      {/* your name */}
       <motion.h1
         className="text-4xl font-bold mb-2"
         initial={{ scale: 0.8, opacity: 0 }}
