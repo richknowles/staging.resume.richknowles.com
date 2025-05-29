@@ -8,7 +8,6 @@ interface Profile {
   linkedin: string;
   github: string;
   website: string;
-  /** Optional custom portrait URL; falls back to /portrait.jpg */
   picture?: string;
 }
 
@@ -24,12 +23,12 @@ export default function Header({ profile }: { profile: Profile }) {
         />
       </div>
 
-      {/* Darth Maul lightsaber hilt + horizontal blade */}
-      <div className="lightsaber-container relative w-full h-12 flex justify-center items-center mb-6">
+      {/* Darth Maul lightsaber hilt + smooth horizontal blade */}
+      <div className="lightsaber-container relative w-full h-16 flex justify-center items-end mb-6">
         <img
           src="/darth-maul-hilt.png"
           alt="Darth Maul lightsaber hilt"
-          className="z-10 w-12 h-auto"
+          className="z-10 w-16 h-auto"
         />
         <div className="beam beam-left"></div>
         <div className="beam beam-right"></div>
@@ -47,7 +46,6 @@ export default function Header({ profile }: { profile: Profile }) {
       <p className="mt-2">
         {profile.location} · {profile.phone}
       </p>
-
       <p className="mt-1">
         <a href={`mailto:${profile.email}`} className="underline">
           {profile.email}
