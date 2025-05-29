@@ -105,7 +105,7 @@ a:hover, button:hover {
   animation: gradientMove 6s ease infinite;
 }
 
-/* Siri-style rotating rainbow border around the resume */
+/* Lightsaber-style pulsing border around the resume */
 .resume-wrapper {
   position: relative;
   border-radius: 12px;
@@ -116,21 +116,43 @@ a:hover, button:hover {
 .resume-wrapper::before {
   content: "";
   position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: conic-gradient(
-    from 0deg,
-    #ff3cac,
-    #784ba0,
-    #2b86c5,
-    #ff3cac
-  );
+  inset: -3px;             /* 3px border thickness */
   border-radius: inherit;
+  border: 3px solid transparent;
+  box-shadow: none;
   z-index: -1;
-  animation: rainbow-rotate 4s linear infinite;
+  animation: lightsaber-border 6s ease infinite;
 }
-@keyframes rainbow-rotate {
-  to { transform: rotate(360deg); }
+
+@keyframes lightsaber-border {
+  0%,   16.66% {
+    /* red on */
+    border-color: #dc2626;
+    box-shadow: 0 0 8px #dc2626;
+  }
+  16.67%, 33.33% {
+    /* off */
+    border-color: transparent;
+    box-shadow: none;
+  }
+  33.34%, 50% {
+    /* blue on */
+    border-color: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+  }
+  50.01%, 66.66% {
+    /* off */
+    border-color: transparent;
+    box-shadow: none;
+  }
+  66.67%, 83.33% {
+    /* green on */
+    border-color: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+  83.34%, 100% {
+    /* off */
+    border-color: transparent;
+    box-shadow: none;
+  }
 }
