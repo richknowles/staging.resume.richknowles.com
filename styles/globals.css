@@ -72,12 +72,10 @@ a:hover, button:hover {
     pulseBg 6s ease-in-out infinite;
   z-index: -1;
 }
-
 @keyframes rotateBg {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
 @keyframes pulseBg {
   0%,100% { opacity:1; }
   50%     { opacity:0.7; }
@@ -101,59 +99,49 @@ a:hover, button:hover {
 /* —— Darth Maul Lightsaber Under Avatar —— */
 
 .lightsaber-container {
-  /* half of your hilt width (w-12 => 3rem) */
-  --hilt-half: 1.5rem;
+  /* half of your hilt width (w-16 ➔ 4rem) */
+  --hilt-half: 2rem;
   position: relative;
   width: 100%;
-  height: 3rem;           /* space for the blade to grow */
+  height: 4rem;           /* enough room for hilt */
   display: flex;
   justify-content: center;
-  align-items: flex-end;  /* bottom-align the hilt */
+  align-items: flex-end;  /* hilt sits at bottom */
   margin-bottom: 1.5rem;
 }
 
 .beam {
   position: absolute;
-  top: 50%;               /* middle of container */
+  top: 50%;               /* center vertically */
   transform: translateY(-50%);
   height: 0.25rem;        /* core thickness */
   background: #fff;       /* pure white core */
   filter:
-    drop-shadow(0 0 4px #fff)        /* tiny white glow */
-    drop-shadow(0 0 8px #dc2626)     /* red glow */
+    drop-shadow(0 0 4px #fff)
+    drop-shadow(0 0 8px #dc2626)
     drop-shadow(0 0 16px #dc2626)
     drop-shadow(0 0 24px #dc2626);
   width: 0;
-  opacity: 0;
+  opacity: 1;
 }
 
-/* Left half expands to left edge, slower */
 .beam-left {
   right: 50%;
-  animation:
-    beam-flicker 1.5s steps(4, end) forwards;
+  animation: beam-ignite 2s ease-out forwards;
 }
 
-/* Right half expands to right edge, slower with slight delay */
 .beam-right {
   left: 50%;
-  animation:
-    beam-flicker 1.5s steps(4, end) forwards 0.2s;
+  animation: beam-ignite 2s ease-out forwards 0.3s;
 }
 
-/* Flicker + expand keyframes */
-@keyframes beam-flicker {
-  0%   { width: 0; opacity: 0; }
-  10%  { width: 2%; opacity: 1; }
-  15%  { opacity: 0; }
-  20%  { width: 5%; opacity: 1; }
-  25%  { opacity: 0; }
-  50%  { 
-    width: calc(50% - var(--hilt-half)); 
+@keyframes beam-ignite {
+  0% {
+    width: 0;
     opacity: 1;
   }
-  100% { 
-    width: calc(50% - var(--hilt-half)); 
+  100% {
+    width: calc(50% - var(--hilt-half));
     opacity: 1;
   }
 }
