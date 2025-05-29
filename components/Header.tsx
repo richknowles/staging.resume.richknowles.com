@@ -8,27 +8,24 @@ interface Profile {
   linkedin: string;
   github: string;
   website: string;
-  picture?: string;
 }
 
 export default function Header({ profile }: { profile: Profile }) {
   return (
-    <header className="hero relative overflow-hidden text-center py-8">
-      {/* Avatar with fade & scale */}
-      <div className="hero-photo w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-6">
-        <img
-          src={profile.picture || "/portrait.jpg"}
-          alt={profile.name}
-          className="w-full h-full object-cover"
-        />
+    <header className="text-center py-8">
+      {/* YOUR PORTRAIT */}
+      <img
+        src="/portrait.jpg"
+        alt={profile.name}
+        className="hero-photo w-48 h-48 mx-auto rounded-full shadow-lg mb-6"
+      />
+
+      {/* —— single center-out lightsaber beam —— */}
+      <div className="lightsaber-container mx-auto mb-6">
+        <div className="beam" />
       </div>
 
-      {/* Pure dual-blade lightsaber beam */}
-      <div className="lightsaber-container w-full mb-6">
-        <div className="beam beam-left" />
-        <div className="beam beam-right" />
-      </div>
-
+      {/* YOUR NAME & CONTACT */}
       <motion.h1
         className="text-4xl font-bold"
         initial={{ scale: 0.8, opacity: 0 }}
@@ -37,7 +34,6 @@ export default function Header({ profile }: { profile: Profile }) {
       >
         {profile.name}
       </motion.h1>
-
       <p className="mt-2">
         {profile.location} · {profile.phone}
       </p>
