@@ -15,13 +15,23 @@ interface Profile {
 export default function Header({ profile }: { profile: Profile }) {
   return (
     <header className="hero relative overflow-hidden text-center py-8">
-      {/* Avatar wrapper preserves square shape; inner <img> won’t be distorted */}
+      {/* Avatar with fade & scale */}
       <div className="hero-photo w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg mb-6">
         <img
           src={profile.picture || "/portrait.jpg"}
           alt={profile.name}
           className="w-full h-full object-cover"
         />
+      </div>
+
+      {/* Darth Maul lightsaber hilt + blade ignition */}
+      <div className="lightsaber my-4">
+        <img
+          src="/darth-maul-hilt.png"
+          alt="Darth Maul lightsaber hilt"
+          className="w-12 h-auto mx-auto"
+        />
+        <div className="blade red"></div>
       </div>
 
       <motion.h1
