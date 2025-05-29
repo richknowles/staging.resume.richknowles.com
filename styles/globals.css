@@ -105,53 +105,38 @@ a:hover, button:hover {
   animation: gradientMove 6s ease infinite;
 }
 
-/* Lightsaber-style pulsing border around the resume */
-.resume-wrapper {
-  position: relative;
-  border-radius: 12px;
-  background-color: var(--background);
-  overflow: visible;    /* allow the animated border to show */
-  z-index: 0;
-}
-.resume-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: -4px;          /* 4px beam thickness */
-  border-radius: inherit;
-  border: 4px solid transparent;
-  animation: lightsaber-border 6s steps(6, end) infinite;
-  z-index: -1;
+/* Darth Maul lightsaber ignition effect */
+@keyframes blade-ignite {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 8rem;
+    opacity: 1;
+  }
 }
 
-@keyframes lightsaber-border {
-  0%,   16.66% {
-    /* red on */
-    border-color: #dc2626;
-    box-shadow: 0 0 8px #dc2626;
-  }
-  16.67%, 33.33% {
-    /* off */
-    border-color: transparent;
-    box-shadow: none;
-  }
-  33.34%, 50% {
-    /* blue on */
-    border-color: #3b82f6;
-    box-shadow: 0 0 8px #3b82f6;
-  }
-  50.01%, 66.66% {
-    /* off */
-    border-color: transparent;
-    box-shadow: none;
-  }
-  66.67%, 83.33% {
-    /* green on */
-    border-color: #10b981;
-    box-shadow: 0 0 8px #10b981;
-  }
-  83.34%, 100% {
-    /* off */
-    border-color: transparent;
-    box-shadow: none;
-  }
+.lightsaber {
+  position: relative;
+  width: 3rem;
+  height: auto;
+  margin: auto;
 }
+
+.blade {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.25rem;
+  background: red;
+  filter: drop-shadow(0 0 8px red);
+  opacity: 0;
+  animation: blade-ignite 1s ease-out forwards;
+}
+
+/* If you’d like blue or green variants, you can add:
+.blade.blue { background: #3b82f6; filter: drop-shadow(0 0 8px #3b82f6); }
+.blade.green { background: #10b981; filter: drop-shadow(0 0 8px #10b981); }
+*/
