@@ -18,21 +18,86 @@
   animation: fadeInScale 800ms ease-out both;
 }
 
-/* ... your other existing styles ... */
+/* Fade-up animation for headings & sections */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 600ms ease-out both;
+}
+
+/* Subtle lift & underline on hover */
+a, button {
+  transition: transform 150ms ease, text-decoration-color 150ms ease;
+}
+a:hover, button:hover {
+  transform: translateY(-2px);
+  text-decoration: underline;
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* Hero background: rotating + pulsing radial gradient */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(
+    circle at center,
+    rgba(220,38,38,0.3),
+    transparent 60%
+  );
+  animation:
+    rotateBg 20s linear infinite,
+    pulseBg 6s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseBg {
+  0%,100% { opacity:1; }
+  50%     { opacity:0.7; }
+}
+
+/* Gradient-text utility for headings */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), #f87171, var(--accent));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 6s ease infinite;
+}
 
 /* —— Dual-Blade Lightsaber Under Avatar —— */
 
 .lightsaber-container {
   position: relative;
   width: 100%;
-  height: 0;           /* blades sit at the very bottom of the portrait’s margin */
+  height: 0;              
+  margin-bottom: 4rem;     /* ↑ increased spacing so name sits lower */
 }
 
 .beam {
   position: absolute;
   top: 0;
-  height: 0.25rem;        /* core thickness */
-  background: #fff;       /* white core */
+  height: 0.25rem;         
+  background: #fff;        
   filter:
     drop-shadow(0 0 4px #fff)
     drop-shadow(0 0 8px var(--accent))
@@ -41,13 +106,11 @@
   width: 0;
 }
 
-/* left blade grows to left */
 .beam-left {
   right: 50%;
   animation: beam-ignite 2s ease-out forwards;
 }
 
-/* right blade grows to right, delayed */
 .beam-right {
   left: 50%;
   animation: beam-ignite 2s ease-out forwards 0.3s;
