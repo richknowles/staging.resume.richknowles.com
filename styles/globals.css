@@ -10,100 +10,7 @@
   --accent-rgb: 220,38,38;
 }
 
-/* Fade & scale animation for hero photo */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.hero-photo {
-  animation: fadeInScale 800ms ease-out both;
-}
-
-/* Fade-up animation for headings & sections */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.fade-up {
-  animation: fadeUp 600ms ease-out both;
-}
-
-/* Subtle lift & underline on hover */
-a, button {
-  transition: transform 150ms ease, text-decoration-color 150ms ease;
-}
-a:hover, button:hover {
-  transform: translateY(-2px);
-  text-decoration: underline;
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-
-/* Hero background: rotating + pulsing radial gradient */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 220%;
-  height: 220%;
-  background: radial-gradient(
-    circle at center,
-    rgba(var(--accent-rgb), 0.3),
-    transparent 60%
-  );
-  animation:
-    rotateBg 20s linear infinite,
-    pulseBg 6s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes rotateBg {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Pulse opacity under hero to draw attention */
-@keyframes pulseBg {
-  0%,100% { opacity: 1; }
-  50%     { opacity: 0.7; }
-}
-
-/* Gradient-text utility for headings */
-@keyframes gradientMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    var(--accent),
-    #f87171,
-    var(--accent)
-  );
-  background-size: 200% 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientMove 6s ease infinite;
-}
+/* … your existing animations for hero/photo/gradient… */
 
 /* Lightsaber-style pulsing border around the resume */
 .resume-wrapper {
@@ -116,42 +23,43 @@ a:hover, button:hover {
 .resume-wrapper::before {
   content: "";
   position: absolute;
-  inset: -3px;             /* 3px border thickness */
+  /* outer border */
+  inset: -4px;                  
   border-radius: inherit;
-  border: 3px solid transparent;
-  box-shadow: none;
+  border: 4px solid transparent;
+  /* discrete jumps: 6 keyframes → 6 steps */
+  animation: lightsaber-border 6s steps(6, end) infinite;
   z-index: -1;
-  animation: lightsaber-border 6s ease infinite;
 }
 
 @keyframes lightsaber-border {
+  /* red on */
   0%,   16.66% {
-    /* red on */
     border-color: #dc2626;
     box-shadow: 0 0 8px #dc2626;
   }
+  /* off */
   16.67%, 33.33% {
-    /* off */
     border-color: transparent;
     box-shadow: none;
   }
+  /* blue on */
   33.34%, 50% {
-    /* blue on */
     border-color: #3b82f6;
     box-shadow: 0 0 8px #3b82f6;
   }
+  /* off */
   50.01%, 66.66% {
-    /* off */
     border-color: transparent;
     box-shadow: none;
   }
+  /* green on */
   66.67%, 83.33% {
-    /* green on */
     border-color: #10b981;
     box-shadow: 0 0 8px #10b981;
   }
+  /* off */
   83.34%, 100% {
-    /* off */
     border-color: transparent;
     box-shadow: none;
   }
