@@ -7,7 +7,6 @@
   --background: #0f172a;
   --foreground: #e2e8f0;
   --accent: #dc2626;
-  --accent-rgb: 220,38,38;
 }
 
 /* Fade & scale animation for hero photo */
@@ -65,7 +64,7 @@ a:hover, button:hover {
   height: 220%;
   background: radial-gradient(
     circle at center,
-    rgba(var(--accent-rgb), 0.3),
+    rgba(220,38,38,0.3),
     transparent 60%
   );
   animation:
@@ -79,10 +78,9 @@ a:hover, button:hover {
   to   { transform: rotate(360deg); }
 }
 
-/* Pulse opacity under hero to draw attention */
 @keyframes pulseBg {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.7; }
+  0%,100% { opacity:1; }
+  50%     { opacity:0.7; }
 }
 
 /* Gradient-text utility for headings */
@@ -92,12 +90,7 @@ a:hover, button:hover {
   100% { background-position: 0% 50%; }
 }
 .gradient-text {
-  background: linear-gradient(
-    90deg,
-    var(--accent),
-    #f87171,
-    var(--accent)
-  );
+  background: linear-gradient(90deg, var(--accent), #f87171, var(--accent));
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -105,31 +98,69 @@ a:hover, button:hover {
   animation: gradientMove 6s ease infinite;
 }
 
-/* Horizontal lightsaber beam effect */
+/* —— Darth Maul Lightsaber Under Avatar —— */
+
 .lightsaber-container {
-  --hilt-half: 1rem; /* half of w-8 (2rem) */
+  /* half of your hilt width (w-8 => 2rem) */
+  --hilt-half: 1rem;
   position: relative;
-}
-.beam {
-  position: absolute;
-  height: 0.25rem; /* 4px */
-  background: rgba(220,38,38,1);
-  filter: drop-shadow(0 0 8px rgba(220,38,38,0.75));
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-}
-.beam-left {
-  right: 50%;
-  animation: beam-expand 1s ease-out forwards;
-}
-.beam-right {
-  left: 50%;
-  animation: beam-expand 1s ease-out forwards 0.1s;
+  width: 100%;
+  height: 3rem;           /* space for the blade to grow */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;  /* bottom-align the hilt */
+  margin-bottom: 1.5rem;
 }
 
-@keyframes beam-expand {
-  to {
-    width: calc(50% - var(--hilt-half));
+.beam {
+  position: absolute;
+  top: 50%;               /* middle of container */
+  transform: translateY(-50%);
+  height: 0.25rem;        /* core thickness */
+  background: #fff;       /* pure white core */
+  filter:
+    drop-shadow(0 0 4px #fff)        /* tiny white glow */
+    drop-shadow(0 0 8px #dc2626)     /* red glow */
+    drop-shadow(0 0 16px #dc2626)
+    drop-shadow(0 0 24px #dc2626);
+  width: 0;
+  opacity: 0;
+}
+
+/* Left half expands to left edge */
+.beam-left {
+  right: 50%;
+  animation:
+    beam-flicker 0.8s steps(4, end) forwards; 
+}
+
+/* Right half expands to right edge, delayed 0.1s */
+.beam-right {
+  left: 50%;
+  animation:
+    beam-flicker 0.8s steps(4, end) forwards 0.1s;
+}
+
+/* Flicker + expand keyframes */
+@keyframes beam-flicker {
+  /* Start hidden */
+  0%   { width: 0; opacity: 0; }
+  /* Quick flicker of tiny core */
+  10%  { width: 2%; opacity: 1; }
+  /* quick off */
+  15%  { opacity: 0; }
+  /* small glow again */
+  20%  { width: 5%; opacity: 1; }
+  /* off again */
+  25%  { opacity: 0; }
+  /* Full extension + stable on */
+  50%  { 
+    width: calc(50% - var(--hilt-half)); 
+    opacity: 1;
+  }
+  /* Stay on */
+  100% { 
+    width: calc(50% - var(--hilt-half)); 
+    opacity: 1;
   }
 }
