@@ -1,5 +1,3 @@
-// app/layout.tsx
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
@@ -29,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-foreground antialiased">
-        {/* Client-side wrapper to initialize AOS animations */}
         <AOSWrapper>{children}</AOSWrapper>
       </body>
     </html>
