@@ -11,137 +11,49 @@
 
 /* Fade & scale animation for hero photo */
 @keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 .hero-photo {
   animation: fadeInScale 800ms ease-out both;
 }
 
-/* Fade-up animation for headings & sections */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.fade-up {
-  animation: fadeUp 600ms ease-out both;
-}
+/* ... your other existing styles ... */
 
-/* Subtle lift & underline on hover */
-a, button {
-  transition: transform 150ms ease, text-decoration-color 150ms ease;
-}
-a:hover, button:hover {
-  transform: translateY(-2px);
-  text-decoration: underline;
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-
-/* Hero background: rotating + pulsing radial gradient */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 220%;
-  height: 220%;
-  background: radial-gradient(
-    circle at center,
-    rgba(220,38,38,0.3),
-    transparent 60%
-  );
-  animation:
-    rotateBg 20s linear infinite,
-    pulseBg 6s ease-in-out infinite;
-  z-index: -1;
-}
-@keyframes rotateBg {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes pulseBg {
-  0%,100% { opacity:1; }
-  50%     { opacity:0.7; }
-}
-
-/* Gradient-text utility for headings */
-@keyframes gradientMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.gradient-text {
-  background: linear-gradient(90deg, var(--accent), #f87171, var(--accent));
-  background-size: 200% 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientMove 6s ease infinite;
-}
-
-/* —— Darth Maul Lightsaber Under Avatar —— */
+/* —— Dual-Blade Lightsaber Under Avatar —— */
 
 .lightsaber-container {
-  /* half of your hilt width (w-16 ➔ 4rem) */
-  --hilt-half: 2rem;
   position: relative;
   width: 100%;
-  height: 4rem;           /* enough room for hilt */
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;  /* hilt sits at bottom */
-  margin-bottom: 1.5rem;
+  height: 0;           /* blades sit at the very bottom of the portrait’s margin */
 }
 
 .beam {
   position: absolute;
-  top: 50%;               /* center vertically */
-  transform: translateY(-50%);
+  top: 0;
   height: 0.25rem;        /* core thickness */
-  background: #fff;       /* pure white core */
+  background: #fff;       /* white core */
   filter:
     drop-shadow(0 0 4px #fff)
-    drop-shadow(0 0 8px #dc2626)
-    drop-shadow(0 0 16px #dc2626)
-    drop-shadow(0 0 24px #dc2626);
+    drop-shadow(0 0 8px var(--accent))
+    drop-shadow(0 0 16px var(--accent))
+    drop-shadow(0 0 24px var(--accent));
   width: 0;
-  opacity: 1;
 }
 
+/* left blade grows to left */
 .beam-left {
   right: 50%;
   animation: beam-ignite 2s ease-out forwards;
 }
 
+/* right blade grows to right, delayed */
 .beam-right {
   left: 50%;
   animation: beam-ignite 2s ease-out forwards 0.3s;
 }
 
 @keyframes beam-ignite {
-  0% {
-    width: 0;
-    opacity: 1;
-  }
-  100% {
-    width: calc(50% - var(--hilt-half));
-    opacity: 1;
-  }
+  0%   { width: 0; }
+  100% { width: 50%; }
 }
