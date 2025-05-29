@@ -101,8 +101,8 @@ a:hover, button:hover {
 /* —— Darth Maul Lightsaber Under Avatar —— */
 
 .lightsaber-container {
-  /* half of your hilt width (w-8 => 2rem) */
-  --hilt-half: 1rem;
+  /* half of your hilt width (w-12 => 3rem) */
+  --hilt-half: 1.5rem;
   position: relative;
   width: 100%;
   height: 3rem;           /* space for the blade to grow */
@@ -127,38 +127,31 @@ a:hover, button:hover {
   opacity: 0;
 }
 
-/* Left half expands to left edge */
+/* Left half expands to left edge, slower */
 .beam-left {
   right: 50%;
   animation:
-    beam-flicker 0.8s steps(4, end) forwards; 
+    beam-flicker 1.5s steps(4, end) forwards;
 }
 
-/* Right half expands to right edge, delayed 0.1s */
+/* Right half expands to right edge, slower with slight delay */
 .beam-right {
   left: 50%;
   animation:
-    beam-flicker 0.8s steps(4, end) forwards 0.1s;
+    beam-flicker 1.5s steps(4, end) forwards 0.2s;
 }
 
 /* Flicker + expand keyframes */
 @keyframes beam-flicker {
-  /* Start hidden */
   0%   { width: 0; opacity: 0; }
-  /* Quick flicker of tiny core */
   10%  { width: 2%; opacity: 1; }
-  /* quick off */
   15%  { opacity: 0; }
-  /* small glow again */
   20%  { width: 5%; opacity: 1; }
-  /* off again */
   25%  { opacity: 0; }
-  /* Full extension + stable on */
   50%  { 
     width: calc(50% - var(--hilt-half)); 
     opacity: 1;
   }
-  /* Stay on */
   100% { 
     width: calc(50% - var(--hilt-half)); 
     opacity: 1;
