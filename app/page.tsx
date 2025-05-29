@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
-      {/* Hero + lightsaber */}
+      {/* Hero section with portrait + single beam + name */}
       <motion.div
         className="hero relative overflow-hidden"
         initial={{ opacity: 0 }}
@@ -29,14 +29,9 @@ export default function Page() {
         transition={{ duration: 1 }}
       >
         <Header profile={profile} />
-
-        {/* single beam expands both ways */}
-        <div className="lightsaber-container">
-          <div className="beam" />
-        </div>
       </motion.div>
 
-      {/* rest of page */}
+      {/* The rest of your page */}
       <motion.section
         className="py-8 max-w-3xl mx-auto"
         initial={{ y: 20, opacity: 0 }}
@@ -45,7 +40,6 @@ export default function Page() {
       >
         <Summary text={summary} />
       </motion.section>
-
       <motion.section
         className="py-8 max-w-3xl mx-auto"
         initial={{ y: 20, opacity: 0 }}
@@ -54,7 +48,6 @@ export default function Page() {
       >
         <Competencies items={coreCompetencies} />
       </motion.section>
-
       <motion.section
         className="py-8 max-w-3xl mx-auto"
         initial="hidden"
@@ -67,7 +60,6 @@ export default function Page() {
       >
         <Experience jobs={experience} />
       </motion.section>
-
       <motion.section
         className="py-8 max-w-3xl mx-auto"
         initial={{ y: 20, opacity: 0 }}
