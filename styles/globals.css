@@ -6,7 +6,7 @@
 :root {
   --background: #0f172a;
   --foreground: #e2e8f0;
-  --accent: #dc2626;       /* lightsaber red */
+  --accent: #dc2626; /* lightsaber red */
 }
 
 /* Fade & scale animation for hero photo */
@@ -18,7 +18,7 @@
   animation: fadeInScale 800ms ease-out both;
 }
 
-/* Fade‐up animation for headings & sections */
+/* Fade-up animation for headings & sections */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -69,7 +69,7 @@ a:hover, button:hover {
   50%     { opacity:0.7; }
 }
 
-/* Gradient‐text utility for headings */
+/* Gradient-text utility for headings */
 @keyframes gradientMove {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -84,36 +84,35 @@ a:hover, button:hover {
   animation: gradientMove 6s ease infinite;
 }
 
-
-/* —— Dual‐Blade Lightsaber Under Avatar —— */
+/* —— Dual-Blade Lightsaber Under Avatar —— */
 
 .lightsaber-container {
   position: relative;
   width: 100%;
-  height: 0;              
-  margin-bottom: 4rem;    /* space below beams so name won’t crowd */
+  height: 0;
+  margin-bottom: 4rem; /* breathing room below beams */
 }
 
 .beam {
   position: absolute;
   top: 0;
-  height: 0.25rem;         /* core thickness */
-  background: var(--accent);  /* red core */
+  height: 0.25rem;      /* core thickness */
+  background: #fff;     /* bright white core */
   filter:
-    drop-shadow(0 0 4px var(--accent))
-    drop-shadow(0 0 8px var(--accent))
-    drop-shadow(0 0 16px var(--accent))
-    drop-shadow(0 0 24px var(--accent));
+    drop-shadow(0 0 2px #fff)          /* subtle white glow */
+    drop-shadow(0 0 4px var(--accent)) /* small red glow */
+    drop-shadow(0 0 10px var(--accent))/* medium red glow */
+    drop-shadow(0 0 20px var(--accent));/* wide red glow */
   width: 0;
 }
 
-/* left blade grows leftwards */
+/* ignite leftwards from center */
 .beam-left {
   right: 50%;
   animation: beam-ignite 2s ease-out forwards;
 }
 
-/* right blade grows rightwards, slightly delayed */
+/* ignite rightwards, with tiny delay */
 .beam-right {
   left: 50%;
   animation: beam-ignite 2s ease-out forwards 0.3s;
