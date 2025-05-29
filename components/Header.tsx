@@ -23,15 +23,10 @@ export default function Header({ profile }: { profile: Profile }) {
         />
       </div>
 
-      {/* Darth Maul lightsaber hilt + smooth horizontal blade */}
-      <div className="lightsaber-container relative w-full h-16 flex justify-center items-end mb-6">
-        <img
-          src="/darth-maul-hilt.png"
-          alt="Darth Maul lightsaber hilt"
-          className="z-10 w-16 h-auto"
-        />
-        <div className="beam beam-left"></div>
-        <div className="beam beam-right"></div>
+      {/* Pure dual-blade lightsaber beam */}
+      <div className="lightsaber-container w-full mb-6">
+        <div className="beam beam-left" />
+        <div className="beam beam-right" />
       </div>
 
       <motion.h1
