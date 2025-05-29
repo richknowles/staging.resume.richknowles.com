@@ -20,59 +20,64 @@ export default function Page() {
   } = resume;
 
   return (
-    <div className="resume-wrapper p-4">
-      <div className="min-h-screen bg-gray-900 text-gray-100">
-        <motion.div
-          className="hero relative overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <Header profile={profile} />
-        </motion.div>
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
+      {/* Hero + lightsaber */}
+      <motion.div
+        className="hero relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Header profile={profile} />
 
-        <motion.section
-          className="py-8 max-w-3xl mx-auto"
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <Summary text={summary} />
-        </motion.section>
+        {/* single beam expands both ways */}
+        <div className="lightsaber-container">
+          <div className="beam" />
+        </div>
+      </motion.div>
 
-        <motion.section
-          className="py-8 max-w-3xl mx-auto"
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <Competencies items={coreCompetencies} />
-        </motion.section>
+      {/* rest of page */}
+      <motion.section
+        className="py-8 max-w-3xl mx-auto"
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <Summary text={summary} />
+      </motion.section>
 
-        <motion.section
-          className="py-8 max-w-3xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.1 } },
-          }}
-        >
-          <Experience jobs={experience} />
-        </motion.section>
+      <motion.section
+        className="py-8 max-w-3xl mx-auto"
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <Competencies items={coreCompetencies} />
+      </motion.section>
 
-        <motion.section
-          className="py-8 max-w-3xl mx-auto"
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <Education schools={education} skills={technicalSkills} />
-        </motion.section>
+      <motion.section
+        className="py-8 max-w-3xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } },
+        }}
+      >
+        <Experience jobs={experience} />
+      </motion.section>
 
-        <Footer />
-      </div>
+      <motion.section
+        className="py-8 max-w-3xl mx-auto"
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <Education schools={education} skills={technicalSkills} />
+      </motion.section>
+
+      <Footer />
     </div>
   );
 }
