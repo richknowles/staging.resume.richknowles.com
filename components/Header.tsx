@@ -29,7 +29,7 @@ export default function Header({ profile }: { profile: Profile }) {
         <img
           src="/darth-maul-hilt.png"
           alt="Darth Maul lightsaber hilt"
-          className="z-10 w-8 h-auto"
+          className="z-10 w-12 h-auto"
         />
         <div className="beam beam-left"></div>
         <div className="beam beam-right"></div>
