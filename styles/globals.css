@@ -114,8 +114,10 @@ button:hover {
 /* —— Center-Out Lightsaber Under Avatar —— */
 .lightsaber-container {
   position: relative;
-  width: 100%;
-  margin-bottom: 4rem; /* extra breathing room before your name */
+  width: 12rem;      /* match your portrait’s outer div width (w-48) */
+  height: 0.25rem;   /* blade thickness */
+  margin: 0 auto 4rem; /* center + breathing room before your name */
+  overflow: visible;
 }
 
 .beam {
@@ -126,14 +128,13 @@ button:hover {
   /* start collapsed, centered */
   transform: translateX(-50%) scaleX(0);
   width: 100%;
-  height: 0.25rem;       /* core thickness */
-  background: #fff;      /* bright white core */
-  filter:
-    /* layered glow: white core edge, then red */
-    drop-shadow(0 0 2px #fff)
-    drop-shadow(0 0 4px var(--accent))
-    drop-shadow(0 0 10px var(--accent))
-    drop-shadow(0 0 20px var(--accent));
+  height: 100%;
+  background: var(--accent);  /* solid red core */
+  box-shadow:
+    0 0 4px var(--accent),
+    0 0 12px var(--accent),
+    0 0 24px var(--accent),
+    0 0 48px var(--accent);
   animation: beam-ignite 2s ease-out forwards;
 }
 
