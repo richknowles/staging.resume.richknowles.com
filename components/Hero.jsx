@@ -1,35 +1,19 @@
-import React from 'react'
-import { Typewriter } from 'react-simple-typewriter'
-
+// components/Hero.jsx
 export default function Hero() {
   return (
     <section className="hero text-center py-16">
-      {/* fixed-size circle container */}
-      <div className="mx-auto mb-6 w-48 h-48 overflow-hidden rounded-full shadow-lg">
-        {/* img fills that circle, cropping any extra so it never squashes */}
-        <img
-          src="/portrait.jpg"
-          alt="Rich Knowles"
-          className="w-full h-full object-cover"
-        />
+      <img
+        src="/portrait.jpg"
+        alt="Rich Knowles"
+        className="hero-photo w-48 h-48 mx-auto rounded-full shadow-lg mb-6"
+      />
+
+      <div className="lightsaber-container">
+        <div className="beam" />
       </div>
 
-      {/* Optional typewriter intro */}
-      <h1 className="text-3xl font-semibold fade-up">
-        <Typewriter
-          words={[
-            'Hi, I’m Rich.',
-            'I architect domain infrastructure.',
-            'Let’s connect!'
-          ]}
-          loop={false}
-          cursor
-          cursorStyle="|"
-          typeSpeed={80}
-          deleteSpeed={40}
-          delaySpeed={1500}
-        />
-      </h1>
+      <h1 className="text-3xl font-semibold">Rich Knowles</h1>
+      {/* … */}
     </section>
-  )
+  );
 }
