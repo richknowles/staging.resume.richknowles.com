@@ -4,41 +4,46 @@
     "location": "Elgin, IL",
     "phone": "847-892-6123",
     "email": "rich@itwerks.net",
-    "linkedin": "https://linkedin.com/in/richknowlestech",
+    "linkedin": "https://linkedin.com/in/richknowles",
     "github": "https://github.com/richknowles",
     "website": "resume.richknowles.com"
   },
-  "summary": "Senior systems administrator and infrastructure architect with 25+ years of experience building, securing, and automating technical environments. Technical lead on large-scale data integrations, custom RMM platforms, SQL migrations, and system rollouts for small businesses and enterprise clients. Built and ran the first Desktop Architecture team at Motorola, leading factory image creation, lease management, and automation tooling. Known for direct, hands‑on work across server, storage, networking, and DNS layers with deep experience supporting mergers and multi‑office setups.",
+  "summary": "Accomplished IT Systems Engineer with 15+ years of professional experience in both corporate and consulting roles. Expert in systems architecture, automation, secure remote access, and AI-powered development. Proven leader in project management and infrastructure modernization. Seeking fully remote opportunities to leverage deep technical expertise and drive innovation for forward-thinking organizations.",
   "coreCompetencies": [
     "Systems Architecture",
+    "Infrastructure Automation (Terraform · Ansible)",
+    "Virtualization: VMware · Proxmox · Citrix",
     "SQL Database Migrations",
     "Client Infrastructure Integration",
     "Server Sales & Licensing",
     "DNS/CloudFlare Setup & Recovery",
     "Backup & DR Planning",
-    "Virtualization: VMware",
-    "Storage & RAID Design",
     "Certificate Automation",
-    "Cloud: AWS · Azure · GCP",
-    "Scripting: Python · VBScript · Shell",
-    "Microsoft 365 & Licensing"
+    "Cloud: AWS · Azure · GCP · Oracle Cloud",
+    "Scripting: Python · PowerShell · Bash · VBScript · Shell",
+    "Microsoft 365 & Licensing",
+    "Remote Access & Secure Connectivity",
+    "Network Security & Threat Mitigation"
   ],
   "experience": [
     {
       "company": "iTWerks",
       "location": "Elgin, IL",
-      "title": "Sr. System Administrator & Product Lead",
+      "title": "Senior IT Systems Engineer",
       "startDate": "2013-04",
       "endDate": "Present",
       "bullets": [
-        "Built a WhatsApp-based marketing campaign app from scratch using Python and JavaScript; packaged it for Windows deployment with a signed certificate.",
-        "Built and sold custom RMM platform using open‑source tools, Python, and shell scripting for proactive server/workstation monitoring and automation.",
-        "Migrated and merged SQL databases using SQL Server Management Studio, especially in support of accounting firm acquisitions.",
-        "Acted as technical lead during M&A activity, integrating data from acquired firms into parent environments and resolving access, policy, and identity conflicts.",
-        "Performed server sales, Microsoft 365 setup, and custom licensing for clients as a Dell Reseller and Microsoft Partner.",
-        "Designed and upgraded RAID configurations and storage pools based on capacity planning needs.",
-        "Built DNS records and managed routing across CloudFlare, MXToolBox, and Google Workspace for small businesses; wrote automated scripts for certificate renewals across VPS deployments.",
-        "Deployed and supported SentinelONE, Veeam, VMware, and multi‑WAN firewalls (Cisco, SonicWall, Barracuda) across 40+ client environments."
+        "Architected and deployed full-stack mass-messaging campaign system (AJ Sender) with WhatsApp backend using Node.js, Selenium, React/TSX, Vite, and Python orchestration.",
+        "Used Terraform for infrastructure-as-code deployments, provisioning cloud instances, DNS records, and networking resources.",
+        "Expanded automation across OCI, Proxmox, and hybrid environments to improve operational efficiency.",
+        "Built Terraform modules to automate infrastructure for Proxmox lab, Oracle Cloud (OCI), and internal DNS systems (Technitium, Cloudflare).",
+        "Designed and built custom RMM solution using open-source tools, Python, and shell scripting for proactive monitoring and endpoint management.",
+        "Led M&A tech integration, merging SQL databases, resolving policy/identity conflicts, and migrating acquired firm data into master environments.",
+        "Deployed and managed VMware and Citrix environments for clients, including virtualization of Windows Server Domain Controllers, application servers, and Synology NAS storage.",
+        "Built and managed split-horizon DNS infrastructure, reverse proxy systems (Caddy), and multi-WAN routing with CloudFlare, SonicWall, Cisco, and Barracuda appliances.",
+        "Performed server sales, Microsoft 365 onboarding, and custom licensing as a Dell Reseller and Microsoft Partner.",
+        "Planned and upgraded RAID and SAN configurations based on capacity forecasts, disaster recovery strategy, and performance targets.",
+        "Deployed and supported enterprise tools including SentinelONE, Veeam, VMware, and secure remote access environments across 40+ clients."
       ]
     },
     {
@@ -51,22 +56,22 @@
         "Delivered a $30M infrastructure rollout at Central DuPage Hospital under budget and ahead of schedule.",
         "Decommissioned over 560 legacy servers for NYSE datacenter migration with zero downtime using phased transitions.",
         "Led Cisco network and robotics deployments at multiple client sites.",
-        "Served as project manager for firewall setup, LAN/WAN design, and VoIP integration at IUOE Local 150’s newly constructed Chicago headquarters on the river—delivering a complete, secure infrastructure buildout for the crane operators’ union.",
-        "Managed client coordination, briefings, and sales‑engineering collaboration across multiple business units."
+        "Managed firewall setup, LAN/WAN design, and VoIP integration at IUOE Local 150’s Chicago headquarters, delivering a secure infrastructure build-out.",
+        "Coordinated client briefings and sales-engineering collaboration across multiple business units."
       ]
     },
     {
-      "company": "Motorola Inc.",
+      "company": "Motorola Solutions",
       "location": "Schaumburg, IL",
-      "title": "Team Lead, Asset Manager, Systems Architect",
+      "title": "Senior Systems Engineer IV",
       "startDate": "1997-01",
       "endDate": "2006-06",
       "bullets": [
-        "Joined Motorola full‑time after 6 months as a contractor. Promoted to team lead, then Asset Manager for engineering, overseeing 3 storerooms and all tracked hardware across engineering labs.",
-        "Founded and led Motorola’s first Desktop Architecture team — responsible for custom Windows image development (CFI) for HP and Dell, built and deployed at the factory.",
-        "Designed rollout processes for thousands of leased machines, including returns, imaging, and in‑house automation tools tailored per department.",
-        "Recovered over $3M in duplicate lease and maintenance charges by auditing HP contracts line‑by‑line across multiple internal systems — recognized with max bonus, stock awards, and division‑wide honors.",
-        "Served as technical point of contact for software loadout validation, hardware vendor negotiation, and division IT coordination."
+        "Promoted to Senior Systems Engineer IV and Asset Manager, overseeing 3 storerooms and all tracked hardware across engineering labs.",
+        "Founded and led Motorola’s first Desktop Architecture team, responsible for custom Windows image development for HP and Dell.",
+        "Designed rollout processes for thousands of leased machines, including returns, imaging, and in-house automation tools.",
+        "Recovered over $3M in duplicate lease and maintenance charges by auditing HP contracts, earning division-wide honors.",
+        "Served as technical point of contact for software load-out validation, hardware vendor negotiation, and division IT coordination."
       ]
     }
   ],
@@ -74,50 +79,52 @@
     {
       "institution": "PortSwigger Web Security Academy",
       "location": "Remote",
-      "degree": "Ongoing",
-      "startDate": "",
+      "degree": "BSCP in Cybersecurity: Web Application Security (Ongoing)",
+      "startDate": "2025-07",
       "endDate": ""
     },
     {
       "institution": "College of DuPage",
       "location": "Glen Ellyn, IL",
       "degree": "Some College in Computer Science",
-      "startDate": "",
-      "endDate": ""
+      "startDate": "1992-01",
+      "endDate": "1995-12"
     },
     {
       "institution": "USMC",
       "location": "Millington, TN",
-      "degree": "Vocational School in Aircraft Electronics",
-      "startDate": "",
-      "endDate": ""
+      "degree": "Avionics (Aircraft Electronics)",
+      "startDate": "1994-04",
+      "endDate": "1995-01"
     }
   ],
   "technicalSkills": [
-    "Linux",
-    "VMware",
+    "Systems Architecture",
+    "Infrastructure Automation: Terraform · Ansible",
+    "Virtualization: VMware · Proxmox · Citrix",
+    "SQL Server · MySQL",
+    "Active Directory & Microsoft 365",
+    "Docker · LXC",
+    "Linux · UNIX · Windows Server · macOS",
     "Veeam",
     "SentinelONE",
-    "SQL Server",
-    "Active Directory",
-    "Docker",
-    "LXC",
-    "AWS",
-    "Azure",
-    "GCP",
-    "CloudFlare",
+    "Confluence · SharePoint",
+    "Intune",
+    "Caddy Reverse Proxy",
+    "Cloud: AWS · Azure · GCP · Oracle Cloud",
+    "CloudFlare DNS",
+    "Shell Scripting · PowerShell · Python · VBScript · Bash",
     "Git",
-    "Python",
-    "Shell Scripting",
-    "RAID",
-    "DNS",
-    "Cisco",
-    "SonicWall",
-    "Barracuda",
-    "MySQL",
-    "Microsoft 365",
-    "Windows Server",
-    "SSL/TLS Automation",
-    "API Architecture"
-  ]
+    "Salesforce",
+    "API Architecture",
+    "Network Security & Threat Mitigation",
+    "Storage & RAID Design",
+    "Backup & DR Planning"
+  ],
+  "military": {
+    "branch": "United States Marine Corps",
+    "rank": "Private First Class",
+    "serviceDates": "1994-01 to 1995-01",
+    "role": "Avionics Technician (Aircraft Electronics)"
+  }
 }
