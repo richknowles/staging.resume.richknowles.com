@@ -3,7 +3,7 @@ export default function Hero() {
   return (
     <section className="hero text-center py-16">
       <img
-        src="/portrait.jpg"
+        src="/portrait.png"
         alt="Rich Knowles"
         className="hero-photo w-48 h-48 mx-auto rounded-full shadow-lg mb-6"
       />
