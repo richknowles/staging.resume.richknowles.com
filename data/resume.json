@@ -38,17 +38,18 @@
       "startDate": "2013-04",
       "endDate": "Present",
       "bullets": [
-        "Administered enterprise systems including user provisioning, role assignments, permission management, and access control across 40+ client environments",
-        "Maintained comprehensive documentation for all configuration changes, user management activities, and system modifications following strict change control procedures",
-        "Supported client audits by providing system evidence, access reports, change history, and compliance documentation",
-        "Partnered with business process owners to implement configuration updates, workflows, and system enhancements while maintaining operational stability",
-        "Managed SQL Server databases including migrations, mergers, and integration during M&A activity for accounting firms",
-        "Deployed and maintained validated monitoring systems (SentinelONE, Veeam) with full audit trails and compliance documentation",
-        "Executed controlled changes to production systems following validation requirements including testing and approval workflows",
-        "Architected and deployed full-stack mass-messaging campaign system (AJ Sender: 2.2M lines) with WhatsApp backend using Node.js, Selenium, React/TSX, Vite, and Python orchestration",
-        "Used Terraform for infrastructure-as-code deployments, provisioning cloud instances, DNS records, and networking resources",
-        "Built and deployed modern static sites using GitHub and Cloudflare Pages with automated CI/CD pipelines",
-        "Trained and implemented AI/LLM systems for 2+ years, developing custom automation workflows and intelligent assistant capabilities"
+        "Administer enterprise systems including user provisioning, role assignments, permission management, and access control across 40+ client environments",
+        "Maintain comprehensive documentation for all configuration changes, user management activities, and system modifications following strict change control procedures",
+        "Support client audits by providing system evidence, access reports, change history, and compliance documentation",
+        "Partner with business process owners to implement configuration updates, workflows, and system enhancements while maintaining operational stability",
+        "Manage SQL Server databases including migrations, mergers, and integration during M&A activity for accounting firms",
+        "Deploy and maintain validated monitoring systems (SentinelONE, Veeam) with full audit trails and compliance documentation",
+        "Execute controlled changes to production systems following validation requirements including testing and approval workflows",
+        "Design and implement custom Model Context Protocol (MCP) servers enabling secure AI integration with enterprise systems",
+        "Architect and deploy full-stack mass-messaging campaign system (AJ Sender: 2.2M lines) with WhatsApp backend using Node.js, Selenium, React/TSX, Vite, and Python orchestration",
+        "Use Terraform for infrastructure-as-code deployments, provisioning cloud instances, DNS records, and networking resources",
+        "Build and deploy modern static sites using GitHub and Cloudflare Pages with automated CI/CD pipelines",
+        "Train and implement AI/LLM systems for 2+ years, developing custom automation workflows and intelligent assistant capabilities"
       ]
     },
     {
@@ -113,7 +114,7 @@
     "Compliance & Documentation: Audit Support · Validation · IQ/OQ/PQ · Change Control · SOPs",
     "Databases: SQL Server · MySQL · Database Administration · Migration · Integration",
     "Infrastructure: VMware · Windows Server · Linux · DNS · Certificate Management",
-    "AI/LLM: 2+ Years Training & Implementation · Custom Automation · Intelligent Assistants",
+    "AI/LLM: 2+ Years Training & Implementation · Custom Automation · Intelligent Assistants · MCP Server Development",
     "DevOps: GitHub · Cloudflare Pages · CI/CD Pipelines · Static Site Generation",
     "Infrastructure Automation: Terraform · Ansible",
     "Cloud: AWS · Azure · GCP · Oracle Cloud",
