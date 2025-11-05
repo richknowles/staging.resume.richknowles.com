@@ -5,16 +5,32 @@ import React, { useState } from 'react';
 import Script from 'next/script';
 
 const PDFGenerator = () => {
-  const [notify, setNotify] = useState(false);
+  const [notify, setNotify] = useState(true); // Default to opted-in
 
-  const handleDownload = () => {
-    const element = document.getElementById('resume-content');
-    const webhookUrl = 'https://webhook.site/#!/a0c4b2d7-1b9e-4c1e-9a4b-7d7d7d7d7d7d/a8e7b7b0-c5a8-4f3b-8b7c-7d7d7d7d7d7d/1'; // Replace with your actual webhook URL
+  const handleDownload = async () => {
+    // Open /print in a hidden iframe to capture
+    const iframe = document.createElement('iframe');
+    iframe.style.position = 'absolute';
+    iframe.style.left = '-9999px';
+    iframe.style.width = '8.5in';
+    iframe.style.height = '11in';
+    document.body.appendChild(iframe);
 
-    if (!element) return;
+    iframe.src = '/print';
 
-    // Temporarily apply PDF-friendly styling
-    element.classList.add('pdf-mode');
+    // Wait for iframe to load
+    await new Promise((resolve) => {
+      iframe.onload = resolve;
+    });
+
+    // Wait a bit more for content to render
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const element = iframe.contentDocument?.body;
+    if (!element) {
+      document.body.removeChild(iframe);
+      return;
+    }
 
     const opt = {
       margin:       0.5,
@@ -24,7 +40,9 @@ const PDFGenerator = () => {
         scale: 2,
         useCORS: true,
         logging: false,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        windowWidth: 816, // 8.5in at 96dpi
+        windowHeight: 1056 // 11in at 96dpi
       },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
       pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
@@ -32,21 +50,43 @@ const PDFGenerator = () => {
 
     // @ts-expect-error - html2pdf is loaded via CDN script
     html2pdf().from(element).set(opt).save().then(() => {
-      // Remove PDF styling after generation
-      element.classList.remove('pdf-mode');
+      // Clean up iframe
+      document.body.removeChild(iframe);
     });
 
+    // Send notification if opted in
     if (notify) {
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: 'Someone downloaded your resume!',
-          timestamp: new Date().toISOString(),
-        }),
-      });
+      try {
+        // Get IP and location info
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+
+        const locationResponse = await fetch(`https://ipapi.co/${ipData.ip}/json/`);
+        const locationData = await locationResponse.json();
+
+        const webhookUrl = 'https://webhook.site/a0c4b2d7-1b9e-4c1e-9a4b-7d7d7d7d7d7d';
+
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: 'Someone downloaded your resume!',
+            timestamp: new Date().toISOString(),
+            ip: ipData.ip,
+            location: {
+              city: locationData.city,
+              region: locationData.region,
+              country: locationData.country_name,
+              timezone: locationData.timezone
+            },
+            userAgent: navigator.userAgent
+          }),
+        });
+      } catch (error) {
+        console.error('Failed to send notification:', error);
+      }
     }
   };
 
