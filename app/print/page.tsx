@@ -1,6 +1,10 @@
 "use client";
 
+import resume from "../../data/resume.json";
+
 export default function PrintPage() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { profile, summary, coreCompetencies, experience, education, military, philosophy, projects } = resume;
 
   return (
     <html>
@@ -131,62 +135,77 @@ export default function PrintPage() {
             height: 40px;
           }
 
+          /* Page break rules for multi-page PDF */
+          h2 {
+            page-break-after: avoid;
+            page-break-inside: avoid;
+          }
+
+          .highlight-box {
+            page-break-inside: avoid;
+          }
+
+          .company-header {
+            page-break-after: avoid;
+          }
+
+          section {
+            page-break-inside: auto;
+          }
+
           @media print {
             body {
-              padding: 0;
+              padding: 0.5in;
             }
             .buy-coffee {
-              page-break-before: avoid;
+              page-break-before: auto;
             }
           }
         `}</style>
       </head>
       <body>
-        <h1>RICHARD T. KNOWLES</h1>
-        <div className="subtitle">Innovation Leader | Systems Architect | Marine Corps Veteran</div>
+        <h1>{profile.name.toUpperCase()}</h1>
+        <div className="subtitle">{profile.title}</div>
 
         <div className="contact">
-          Elgin, IL 60123 | 847-857-8813 | <a href="mailto:rich@itwerks.net">rich@itwerks.net</a><br/>
-          <a href="https://linkedin.com/in/richknowlestech">LinkedIn</a> |
-          <a href="https://github.com/richknowles">GitHub</a> |
-          <a href="https://resume.richknowles.com">resume.richknowles.com</a>
+          {profile.location} | {profile.phone} | <a href={`mailto:${profile.email}`}>{profile.email}</a><br/>
+          <a href={profile.linkedin}>LinkedIn</a> |
+          <a href={profile.github}>GitHub</a> |
+          <a href={`https://${profile.website}`}>{profile.website}</a>
         </div>
 
         <h2>Professional Summary</h2>
-        <p>
-          Senior Systems Administrator and Innovation Leader with 25+ years revolutionizing enterprise IT infrastructure.
-          <strong>Pioneered Motorola&apos;s industry-first Certified Factory Image (CFI) program</strong> and
-          <strong>led global engineering standards adopted across 7 business units worldwide</strong>.
-          Architect of production-scale applications including a 2.2M-line WhatsApp messaging platform and the world&apos;s
-          first custom MCP server for Linux AI integration. Deep expertise in validated systems, compliance-driven
-          environments, disaster recovery planning, and modern full-stack development. Marine Corps veteran eligible
-          for security clearance. Passionate about building innovative solutions that solve impossible problems.
-        </p>
-        <p>
-          <strong>I&apos;m not your typical IT guy.</strong> I toured with Slaughter, mixed my own album on Logic Pro X,
-          and approach every project like a rock show—it has to be flawless, on time, and leave everyone wanting more.
-        </p>
+        {summary.split('\n\n').map((para: string, i: number) => (
+          <p key={i} dangerouslySetInnerHTML={{
+            __html: para
+              .replace(/Pioneered Motorola's/g, '<strong>Pioneered Motorola&apos;s</strong>')
+              .replace(/industry-first Certified Factory Image \(CFI\) program/g, '<strong>industry-first Certified Factory Image (CFI) program</strong>')
+              .replace(/led global engineering standards adopted across 7 business units worldwide/g, '<strong>led global engineering standards adopted across 7 business units worldwide</strong>')
+              .replace(/I'm not your typical IT guy\./g, '<strong>I&apos;m not your typical IT guy.</strong>')
+          }} />
+        ))}
 
         <h2>Core Competencies</h2>
         <div className="skills-grid">
           <div>
             <strong>Leadership & Innovation</strong><br/>
-            Global Standards Development | Industry-First Solutions | Cross-Functional Team Leadership | Strategic Planning
+            {coreCompetencies.leadership}
           </div>
           <div>
             <strong>Enterprise Systems</strong><br/>
-            System Administration & Configuration | Change Control & Validation | User Access Management |
-            GxP-Ready Documentation | Audit Support & Compliance | Disaster Recovery Planning
+            {coreCompetencies.enterprise}
           </div>
         </div>
         <div className="skills-grid">
           <div>
             <strong>Development & Architecture</strong><br/>
-            Full-Stack Development | AI/LLM Integration | Cloud Architecture (AWS/Azure/GCP) | Infrastructure as Code | DevOps | CI/CD
+            {coreCompetencies.development}
           </div>
           <div>
             <strong>Technical Stack</strong><br/>
-            Python | Rust | JavaScript/TypeScript | VMware | Docker | Active Directory | SQL Server | AWS | Azure | GCP
+            {coreCompetencies.technical.split('\n').map((line: string, i: number) => (
+              <span key={i}>{line}<br/></span>
+            ))}
           </div>
         </div>
 
@@ -322,23 +341,25 @@ export default function PrintPage() {
         <h2>Military Service</h2>
         <p>
           <strong>United States Marine Corps</strong><br/>
-          Rank: Private First Class<br/>
-          MOS: Avionics Technician (Aircraft Electronics)<br/>
-          Service: April 1994 – January 1995<br/>
-          Security Clearance: Eligible for reinstatement
+          Rank: {military.rank}<br/>
+          MOS: {military.mos}<br/>
+          Service: {military.service}<br/>
+          Security Clearance: {military.clearance}
         </p>
 
+        <h2>Technical Projects</h2>
+        {projects.map((project, idx) => (
+          <div key={idx} style={{ marginBottom: '12pt' }}>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+            <p style={{ fontSize: '10pt', color: '#666' }}><em>{project.tech}</em></p>
+          </div>
+        ))}
+
         <h2>Professional Philosophy</h2>
-        <p>
-          I don&apos;t just fix IT problems—I revolutionize how enterprises deploy technology.
-        </p>
-        <p>
-          Whether you need someone to untangle 20 years of IT debt, architect a production-scale application from scratch,
-          lead global standards adoption, or build something that&apos;s never existed before—I&apos;m your guy.
-        </p>
-        <p>
-          <strong>First take is usually the best take. Let&apos;s nail this.</strong>
-        </p>
+        {philosophy.split('\n\n').map((para: string, i: number) => (
+          <p key={i}>{para}</p>
+        ))}
 
         <div className="buy-coffee">
           <a href="https://www.buymeacoffee.com/richknowles" target="_blank" rel="noopener noreferrer">
