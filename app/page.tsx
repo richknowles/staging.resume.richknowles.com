@@ -22,18 +22,18 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
-      {/* Hero section with portrait + single beam + name */}
-      <motion.div
-        className="hero relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Header profile={profile} />
-      </motion.div>
-
       {/* The rest of your page */}
       <div id="resume-content">
+        {/* Hero section with portrait + single beam + name */}
+        <motion.div
+          className="hero relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Header profile={profile} />
+        </motion.div>
+
         <motion.section
           className="py-8 max-w-3xl mx-auto"
           initial={{ y: 20, opacity: 0 }}

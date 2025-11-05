@@ -11,16 +11,30 @@ const PDFGenerator = () => {
     const element = document.getElementById('resume-content');
     const webhookUrl = 'https://webhook.site/#!/a0c4b2d7-1b9e-4c1e-9a4b-7d7d7d7d7d7d/a8e7b7b0-c5a8-4f3b-8b7c-7d7d7d7d7d7d/1'; // Replace with your actual webhook URL
 
+    if (!element) return;
+
+    // Temporarily apply PDF-friendly styling
+    element.classList.add('pdf-mode');
+
     const opt = {
       margin:       0.5,
       filename:     'richknowles_resume.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      html2canvas:  {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+      pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
     };
 
     // @ts-expect-error - html2pdf is loaded via CDN script
-    html2pdf().from(element).set(opt).save();
+    html2pdf().from(element).set(opt).save().then(() => {
+      // Remove PDF styling after generation
+      element.classList.remove('pdf-mode');
+    });
 
     if (notify) {
       fetch(webhookUrl, {
