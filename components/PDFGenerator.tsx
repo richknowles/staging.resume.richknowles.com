@@ -64,8 +64,23 @@ const PDFGenerator = () => {
         const locationResponse = await fetch(`https://ipapi.co/${ipData.ip}/json/`);
         const locationData = await locationResponse.json();
 
-        const webhookUrl = 'https://webhook.site/a0c4b2d7-1b9e-4c1e-9a4b-7d7d7d7d7d7d';
+        const timestamp = new Date().toISOString();
+        const location = `${locationData.city}, ${locationData.region}, ${locationData.country_name}`;
 
+        // Send to ntfy.sh for instant terminal/mobile notifications
+        await fetch('https://ntfy.sh/richknowles-resume', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain',
+            'Title': '📄 Resume Downloaded!',
+            'Priority': 'high',
+            'Tags': 'briefcase,earth_americas'
+          },
+          body: `Location: ${location}\nIP: ${ipData.ip}\nTime: ${new Date().toLocaleString()}`
+        });
+
+        // Also send to webhook for detailed logging
+        const webhookUrl = 'https://webhook.site/a0c4b2d7-1b9e-4c1e-9a4b-7d7d7d7d7d7d';
         await fetch(webhookUrl, {
           method: 'POST',
           headers: {
@@ -73,7 +88,7 @@ const PDFGenerator = () => {
           },
           body: JSON.stringify({
             message: 'Someone downloaded your resume!',
-            timestamp: new Date().toISOString(),
+            timestamp: timestamp,
             ip: ipData.ip,
             location: {
               city: locationData.city,
