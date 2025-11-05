@@ -12,8 +12,8 @@ const PDFGenerator = () => {
     const iframe = document.createElement('iframe');
     iframe.style.position = 'absolute';
     iframe.style.left = '-9999px';
-    iframe.style.width = '8.5in';
-    iframe.style.height = '11in';
+    iframe.style.width = '1200px'; // Wide enough to capture full content
+    iframe.style.height = '1600px';
     document.body.appendChild(iframe);
 
     iframe.src = '/print';
@@ -24,7 +24,7 @@ const PDFGenerator = () => {
     });
 
     // Wait a bit more for content to render
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     const element = iframe.contentDocument?.body;
     if (!element) {
@@ -41,11 +41,11 @@ const PDFGenerator = () => {
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: 816, // 8.5in at 96dpi
-        windowHeight: 1056 // 11in at 96dpi
+        width: 1200,
+        height: 1600
       },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
-      pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak:    { mode: ['css', 'legacy'] }
     };
 
     // @ts-expect-error - html2pdf is loaded via CDN script

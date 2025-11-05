@@ -18,7 +18,9 @@ export default function PrintPage() {
             color: #1a1a1a;
             font-size: 11pt;
             line-height: 1.5;
-            padding: 0.5in;
+            padding: 0.75in;
+            max-width: 7.5in;
+            margin: 0 auto;
           }
 
           h1 {
