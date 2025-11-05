@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
 import AOSWrapper from "../components/AOSWrapper";
+import FloatingMenu from "../components/FloatingMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-foreground antialiased">
+        <FloatingMenu />
         <AOSWrapper>{children}</AOSWrapper>
 
         {/* Buy Me a Coffee Widget */}
