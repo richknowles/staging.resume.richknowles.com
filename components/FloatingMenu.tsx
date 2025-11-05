@@ -89,7 +89,7 @@ const FloatingMenu = () => {
     {
       icon: '💙',
       label: 'For Anna',
-      href: null, // No link, just visual tribute
+      href: '/anna', // Link to Anna tribute page
       particles: ['💙', '💛', '❤️', '💕', '✨', '🇺🇦'],
       colors: ['#0057B7', '#FFD700', '#ff1744', '#ff4081']
     }
@@ -150,7 +150,11 @@ const FloatingMenu = () => {
 
   const handleClick = (href: string | null) => {
     if (href) {
-      window.open(href, '_blank', 'noopener,noreferrer');
+      if (href.startsWith('http')) {
+        window.open(href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = href;
+      }
     }
   };
 
