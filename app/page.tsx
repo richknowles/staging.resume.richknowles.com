@@ -8,6 +8,7 @@ import Competencies from "../components/Competencies";
 import Experience from "../components/Experience";
 import Education from "../components/Education";
 import Footer from "../components/Footer";
+import PDFGenerator from "../components/PDFGenerator";
 
 export default function Page() {
   const {
@@ -32,44 +33,47 @@ export default function Page() {
       </motion.div>
 
       {/* The rest of your page */}
-      <motion.section
-        className="py-8 max-w-3xl mx-auto"
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <Summary text={summary} />
-      </motion.section>
-      <motion.section
-        className="py-8 max-w-3xl mx-auto"
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <Competencies items={coreCompetencies} />
-      </motion.section>
-      <motion.section
-        className="py-8 max-w-3xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.1 } },
-        }}
-      >
-        <Experience jobs={experience} />
-      </motion.section>
-      <motion.section
-        className="py-8 max-w-3xl mx-auto"
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <Education schools={education} skills={technicalSkills} />
-      </motion.section>
+      <div id="resume-content">
+        <motion.section
+          className="py-8 max-w-3xl mx-auto"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Summary text={summary} />
+        </motion.section>
+        <motion.section
+          className="py-8 max-w-3xl mx-auto"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Competencies items={coreCompetencies} />
+        </motion.section>
+        <motion.section
+          className="py-8 max-w-3xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+        >
+          <Experience jobs={experience} />
+        </motion.section>
+        <motion.section
+          className="py-8 max-w-3xl mx-auto"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Education schools={education} skills={technicalSkills} />
+        </motion.section>
+      </div>
 
       <Footer />
+      <PDFGenerator />
     </div>
   );
 }
