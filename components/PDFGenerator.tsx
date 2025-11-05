@@ -12,8 +12,8 @@ const PDFGenerator = () => {
     const iframe = document.createElement('iframe');
     iframe.style.position = 'absolute';
     iframe.style.left = '-9999px';
-    iframe.style.width = '1200px'; // Wide enough to capture full content
-    iframe.style.height = '1600px';
+    iframe.style.width = '8.5in'; // Letter width
+    iframe.style.height = '11in'; // Initial height, will expand
     document.body.appendChild(iframe);
 
     iframe.src = '/print';
@@ -23,14 +23,21 @@ const PDFGenerator = () => {
       iframe.onload = resolve;
     });
 
-    // Wait a bit more for content to render
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // Wait for content to render
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     const element = iframe.contentDocument?.body;
     if (!element) {
       document.body.removeChild(iframe);
       return;
     }
+
+    // Get the actual content height to ensure we capture everything
+    const contentHeight = element.scrollHeight;
+    iframe.style.height = contentHeight + 'px';
+
+    // Wait a moment for resize to take effect
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     const opt = {
       margin:       0.5,
@@ -41,8 +48,8 @@ const PDFGenerator = () => {
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
-        width: 1200,
-        height: 1600
+        windowWidth: 816, // 8.5in at 96 DPI
+        windowHeight: contentHeight
       },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
       pagebreak:    { mode: ['css', 'legacy'] }

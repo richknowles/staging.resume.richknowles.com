@@ -17,8 +17,10 @@ export default function Page() {
     coreCompetencies,
     experience,
     education,
-    technicalSkills,
   } = resume;
+
+  // Technical skills for Education component
+  const technicalSkills = coreCompetencies.technical.split('\n');
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
@@ -48,7 +50,7 @@ export default function Page() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
         >
-          <Competencies items={coreCompetencies} />
+          <Competencies coreCompetencies={coreCompetencies} />
         </motion.section>
         <motion.section
           className="py-8 max-w-3xl mx-auto"
@@ -60,7 +62,8 @@ export default function Page() {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
-          <Experience jobs={experience} />
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          <Experience jobs={experience as any} />
         </motion.section>
         <motion.section
           className="py-8 max-w-3xl mx-auto"
