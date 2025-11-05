@@ -144,3 +144,41 @@ button:hover {
     transform: translateX(-50%) scaleX(1);
   }
 }
+
+/* PDF Print Styles - Force readable colors for PDF export */
+@media print, (prefers-color-scheme: light) {
+  #resume-content,
+  #resume-content * {
+    background-color: white !important;
+    color: #1a1a1a !important;
+    box-shadow: none !important;
+  }
+
+  #resume-content h1,
+  #resume-content h2,
+  #resume-content h3 {
+    color: #dc2626 !important;
+  }
+
+  #resume-content a {
+    color: #2563eb !important;
+  }
+}
+
+/* PDF-specific class for better capture */
+.pdf-mode {
+  background-color: white !important;
+  color: #1a1a1a !important;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.pdf-mode h1,
+.pdf-mode h2,
+.pdf-mode h3 {
+  color: #dc2626 !important;
+}
+
+.pdf-mode a {
+  color: #2563eb !important;
+}
