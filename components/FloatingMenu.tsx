@@ -17,6 +17,24 @@ const FloatingMenu = () => {
   const [particleId, setParticleId] = useState(0);
   const [showStrike, setShowStrike] = useState(false);
   const [flameParticles, setFlameParticles] = useState<Particle[]>([]);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Track mouse position
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Calculate distance from button (top-right corner: ~window.innerWidth - 40, ~40)
+  const distance = Math.sqrt(
+    Math.pow(mousePos.x - (typeof window !== 'undefined' ? window.innerWidth - 40 : 1000), 2) +
+    Math.pow(mousePos.y - 40, 2)
+  );
+  const maxDistance = 500; // Max distance to consider
+  const brightness = Math.max(0.3, Math.min(1, 1 - (distance / maxDistance)));
 
   // Trigger laser strike and flame effect on mount
   useEffect(() => {
@@ -50,7 +68,7 @@ const FloatingMenu = () => {
     {
       icon: '🎵',
       label: 'Music',
-      href: 'https://soundcloud.com/richknowles',
+      href: 'https://soundcloud.com/rich-knowles-82881417',
       particles: ['♪', '♫', '♬', '♩', '♭', '♮', '♯'],
       colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7']
     },
@@ -72,11 +90,24 @@ const FloatingMenu = () => {
 
   const spawnParticles = (itemParticles: string[], itemColors: string[]) => {
     const newParticles: Particle[] = [];
-    const count = Math.floor(Math.random() * 8) + 12; // 12-20 particles
+    const count = Math.floor(Math.random() * 20) + 40; // 40-60 particles - MASSIVE EXPLOSION!
+
+    // Calculate center of screen for explosion target
+    const centerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 800;
+    const centerY = typeof window !== 'undefined' ? window.innerHeight / 2 : 400;
+
+    // Button is at top-right
+    const buttonX = typeof window !== 'undefined' ? window.innerWidth - 40 : 1000;
+    const buttonY = 40;
 
     for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const velocity = Math.random() * 100 + 50;
+      // Direction towards center with some randomness
+      const angleToCenter = Math.atan2(centerY - buttonY, centerX - buttonX);
+      const spread = 1.2; // Spread angle in radians (~70 degrees)
+      const angle = angleToCenter + (Math.random() - 0.5) * spread;
+
+      // High velocity with momentum - like outer space!
+      const velocity = Math.random() * 300 + 250; // 250-550 px
       const symbol = itemParticles[Math.floor(Math.random() * itemParticles.length)];
       const color = itemColors[Math.floor(Math.random() * itemColors.length)];
 
@@ -95,7 +126,7 @@ const FloatingMenu = () => {
     // Remove particles after animation
     setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.find(np => np.id === p.id)));
-    }, 2000);
+    }, 3000);
   };
 
   const handleItemHover = (item: typeof menuItems[0]) => {
@@ -165,26 +196,26 @@ const FloatingMenu = () => {
         </AnimatePresence>
       </div>
 
-      {/* Particle Container for Menu Hovers */}
+      {/* Particle Container for Menu Hovers - BIGGER EXPLOSIONS! */}
       <div className="fixed top-4 right-4 pointer-events-none z-[9999]">
         <AnimatePresence>
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute text-2xl font-bold"
+              className="absolute text-5xl font-bold"
               style={{ color: particle.color }}
-              initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+              initial={{ x: 0, y: 0, opacity: 1, scale: 1.2 }}
               animate={{
                 x: particle.x,
                 y: particle.y,
                 opacity: 0,
-                scale: 0.3,
-                rotate: Math.random() * 360
+                scale: 0.4,
+                rotate: Math.random() * 720 // More rotation for momentum effect
               }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 2,
-                ease: "easeOut"
+                duration: 3,
+                ease: "linear" // Linear for outer space momentum feel
               }}
             >
               {particle.symbol}
@@ -193,11 +224,11 @@ const FloatingMenu = () => {
         </AnimatePresence>
       </div>
 
-      {/* Menu Button */}
+      {/* Menu Button with Proximity-Based Glow */}
       <div className="fixed top-4 right-4 z-50">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl flex items-center justify-center text-2xl relative"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 text-white flex items-center justify-center text-2xl relative"
           initial={{ opacity: 0, scale: 0, rotate: -15 }}
           animate={{
             opacity: 1,
@@ -211,7 +242,8 @@ const FloatingMenu = () => {
             ease: "easeOut"
           }}
           style={{
-            filter: 'drop-shadow(0 0 20px rgba(147, 51, 234, 0.8)) drop-shadow(0 0 40px rgba(147, 51, 234, 0.4))',
+            filter: `drop-shadow(0 0 ${20 * brightness}px rgba(147, 51, 234, ${0.8 * brightness})) drop-shadow(0 0 ${40 * brightness}px rgba(147, 51, 234, ${0.6 * brightness})) drop-shadow(0 0 ${60 * brightness}px rgba(147, 51, 234, ${0.4 * brightness}))`,
+            boxShadow: 'none', // Remove any default box shadow
           }}
           whileHover={{ scale: 1.1, rotate: 180 }}
           whileTap={{ scale: 0.9 }}
@@ -234,6 +266,7 @@ const FloatingMenu = () => {
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.3 }}
             className="relative z-10"
+            style={{ textDecoration: 'none' }} // Ensure no underline
           >
             {isOpen ? '✕' : '⚡'}
           </motion.span>
@@ -256,13 +289,17 @@ const FloatingMenu = () => {
                   className={`
                     w-48 px-4 py-3 rounded-lg shadow-lg
                     flex items-center gap-3
-                    text-white font-semibold
+                    font-semibold
                     transition-all duration-300
                     ${item.label === 'Music' ? 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600' : ''}
                     ${item.label === 'GitHub' ? 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800' : ''}
                     ${item.label === 'For Anna' ? 'bg-gradient-to-r from-blue-500 to-yellow-400 hover:from-blue-600 hover:to-yellow-500' : ''}
                     ${!item.href ? 'cursor-default' : 'cursor-pointer'}
                   `}
+                  style={{
+                    color: '#F93C45', // Bright red text
+                    textDecoration: 'none', // No underline
+                  }}
                   initial={{ x: 100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 100, opacity: 0 }}
@@ -276,7 +313,7 @@ const FloatingMenu = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="text-2xl">{item.icon}</span>
-                  <span>{item.label}</span>
+                  <span style={{ color: '#F93C45' }}>{item.label}</span>
                 </motion.button>
               ))}
             </motion.div>
