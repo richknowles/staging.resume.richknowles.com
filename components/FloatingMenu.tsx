@@ -18,6 +18,13 @@ const FloatingMenu = () => {
   const [showStrike, setShowStrike] = useState(false);
   const [flameParticles, setFlameParticles] = useState<Particle[]>([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [noFunZone, setNoFunZone] = useState(false);
+
+  // Load preference from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('noFunZone');
+    if (saved === 'true') setNoFunZone(true);
+  }, []);
 
   // Track mouse position
   useEffect(() => {
@@ -34,7 +41,7 @@ const FloatingMenu = () => {
     Math.pow(mousePos.y - 40, 2)
   );
   const maxDistance = 500; // Max distance to consider
-  const brightness = Math.max(0.3, Math.min(1, 1 - (distance / maxDistance)));
+  const brightness = noFunZone ? 0.5 : Math.max(0.3, Math.min(1, 1 - (distance / maxDistance)));
 
   // Trigger laser strike and flame effect on mount
   useEffect(() => {
@@ -88,9 +95,17 @@ const FloatingMenu = () => {
     }
   ];
 
+  const toggleNoFunZone = () => {
+    const newValue = !noFunZone;
+    setNoFunZone(newValue);
+    localStorage.setItem('noFunZone', String(newValue));
+  };
+
   const spawnParticles = (itemParticles: string[], itemColors: string[]) => {
+    if (noFunZone) return; // No particles in No Fun Zone!
+
     const newParticles: Particle[] = [];
-    const count = Math.floor(Math.random() * 20) + 40; // 40-60 particles - MASSIVE EXPLOSION!
+    const count = Math.floor(Math.random() * 8) + 12; // 12-20 particles - optimized!
 
     // Calculate center of screen for explosion target
     const centerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 800;
@@ -107,7 +122,7 @@ const FloatingMenu = () => {
       const angle = angleToCenter + (Math.random() - 0.5) * spread;
 
       // High velocity with momentum - like outer space!
-      const velocity = Math.random() * 300 + 250; // 250-550 px
+      const velocity = Math.random() * 200 + 200; // 200-400 px (optimized)
       const symbol = itemParticles[Math.floor(Math.random() * itemParticles.length)];
       const color = itemColors[Math.floor(Math.random() * itemColors.length)];
 
@@ -126,7 +141,7 @@ const FloatingMenu = () => {
     // Remove particles after animation
     setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.find(np => np.id === p.id)));
-    }, 3000);
+    }, 2000);
   };
 
   const handleItemHover = (item: typeof menuItems[0]) => {
@@ -196,25 +211,25 @@ const FloatingMenu = () => {
         </AnimatePresence>
       </div>
 
-      {/* Particle Container for Menu Hovers - BIGGER EXPLOSIONS! */}
+      {/* Particle Container for Menu Hovers - OPTIMIZED EXPLOSIONS! */}
       <div className="fixed top-4 right-4 pointer-events-none z-[9999]">
         <AnimatePresence>
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute text-5xl font-bold"
+              className="absolute text-4xl font-bold"
               style={{ color: particle.color }}
-              initial={{ x: 0, y: 0, opacity: 1, scale: 1.2 }}
+              initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
               animate={{
                 x: particle.x,
                 y: particle.y,
                 opacity: 0,
-                scale: 0.4,
-                rotate: Math.random() * 720 // More rotation for momentum effect
+                scale: 0.3,
+                rotate: Math.random() * 540 // Optimized rotation
               }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 3,
+                duration: 2,
                 ease: "linear" // Linear for outer space momentum feel
               }}
             >
@@ -228,7 +243,7 @@ const FloatingMenu = () => {
       <div className="fixed top-4 right-4 z-50">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 text-white flex items-center justify-center text-2xl relative"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 text-white flex items-center justify-center text-2xl relative border-0 outline-none"
           initial={{ opacity: 0, scale: 0, rotate: -15 }}
           animate={{
             opacity: 1,
@@ -243,7 +258,10 @@ const FloatingMenu = () => {
           }}
           style={{
             filter: `drop-shadow(0 0 ${20 * brightness}px rgba(147, 51, 234, ${0.8 * brightness})) drop-shadow(0 0 ${40 * brightness}px rgba(147, 51, 234, ${0.6 * brightness})) drop-shadow(0 0 ${60 * brightness}px rgba(147, 51, 234, ${0.4 * brightness}))`,
-            boxShadow: 'none', // Remove any default box shadow
+            boxShadow: 'none',
+            textDecoration: 'none',
+            border: 'none',
+            outline: 'none',
           }}
           whileHover={{ scale: 1.1, rotate: 180 }}
           whileTap={{ scale: 0.9 }}
@@ -266,7 +284,7 @@ const FloatingMenu = () => {
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.3 }}
             className="relative z-10"
-            style={{ textDecoration: 'none' }} // Ensure no underline
+            style={{ textDecoration: 'none', border: 'none', outline: 'none' }}
           >
             {isOpen ? '✕' : '⚡'}
           </motion.span>
@@ -316,6 +334,42 @@ const FloatingMenu = () => {
                   <span style={{ color: '#F93C45' }}>{item.label}</span>
                 </motion.button>
               ))}
+
+              {/* No Fun Zone Toggle */}
+              <motion.button
+                onClick={toggleNoFunZone}
+                className={`
+                  w-48 px-4 py-3 rounded-lg shadow-lg
+                  flex items-center gap-3
+                  font-semibold
+                  transition-all duration-300
+                  cursor-pointer
+                  ${noFunZone
+                    ? 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600'
+                    : 'bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600'
+                  }
+                `}
+                style={{
+                  color: '#F93C45',
+                  textDecoration: 'none',
+                }}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{
+                  delay: menuItems.length * 0.1,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25
+                }}
+                whileHover={{ scale: 1.05, x: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-2xl">{noFunZone ? '😴' : '🎉'}</span>
+                <span style={{ color: '#F93C45' }}>
+                  {noFunZone ? 'Fun Mode' : 'No Fun Zone'}
+                </span>
+              </motion.button>
             </motion.div>
           )}
         </AnimatePresence>
