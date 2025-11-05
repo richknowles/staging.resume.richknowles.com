@@ -75,7 +75,7 @@ const FloatingMenu = () => {
     {
       icon: '🎵',
       label: 'Music',
-      href: 'https://soundcloud.com/rich-knowles-82881417',
+      href: 'https://soundcloud.com/rich-knowles-82881417/sets/rich-knowles?si=39689a984232486f922218d556b50610&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing',
       particles: ['♪', '♫', '♬', '♩', '♭', '♮', '♯'],
       colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7']
     },
