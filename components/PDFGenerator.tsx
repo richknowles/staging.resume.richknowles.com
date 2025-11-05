@@ -19,7 +19,7 @@ const PDFGenerator = () => {
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    // @ts-ignore
+    // @ts-expect-error - html2pdf is loaded via CDN script
     html2pdf().from(element).set(opt).save();
 
     if (notify) {
@@ -60,7 +60,7 @@ const PDFGenerator = () => {
         </div>
         <div className="buy-me-a-coffee">
           <a href="https://www.buymeacoffee.com/richknowles" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=richknowles&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=richknowles&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" />
           </a>
         </div>
       </div>
