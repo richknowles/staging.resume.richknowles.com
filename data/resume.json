@@ -26,7 +26,8 @@
       "endDate": "Present",
       "description": "Active vulnerability research across public bug bounty programs.",
       "bullets": [
-        "Web application testing with Burp Suite, reconnaissance automation, and structured vulnerability reporting",
+        "Accepted vulnerability finding (sensitive-data-exposure class) on a production messaging API — demonstrated a full HTTPS-to-cleartext credential-exposure chain with a working proof-of-concept",
+        "Active across public bug bounty programs: web application testing with Burp Suite, recon automation, and structured vulnerability reporting",
         "PortSwigger Web Security Academy BSCP certification track in progress"
       ]
     },
