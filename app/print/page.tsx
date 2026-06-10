@@ -230,7 +230,7 @@ export default function PrintPage() {
             security (CORS, rate limiting). One-command installation with automated system optimization scripts.
           </li>
           <li>
-            <strong>Built Peacock: World&apos;s first custom Model Context Protocol (MCP) server for Claude Desktop on Linux</strong><br/>
+            <strong>Built Peacock: One of the earliest custom Model Context Protocol (MCP) servers for Claude Desktop on Linux</strong><br/>
             Revolutionary AI/system integration providing filesystem access, command execution, directory browsing. Python async
             programming with security-conscious design (home directory restriction, 30-second timeouts). Industry innovation - pioneered
             custom MCP server development.
