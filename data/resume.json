@@ -36,12 +36,12 @@
       "title": "Lead Infrastructure Architect & SaaS Platform Engineer",
       "startDate": "2013-04",
       "endDate": "2026-05",
-      "description": "Designed, deployed, and secured compliance-driven SaaS and infrastructure environments for ~50 mid-market clients across healthcare, financial, and legal sectors; 99.9% uptime with zero documented security incidents over 13 years.",
+      "description": "Designed, deployed, and secured compliance-driven SaaS and infrastructure environments for ~50 mid-market clients across healthcare, financial, and legal sectors; 99.9% uptime over 13 years with zero client data loss or compromise — every intrusion detected, contained, and remediated.",
       "bullets": [
         "Operated multi-tenant Wazuh SIEM and SentinelONE EDR across distributed client workloads; led SOC 2 and GxP audit readiness with rigorous control documentation and evidence collection",
         "Led incident response on a live 34-hour Mirai-variant SSH brute-force attack — isolated via Cowrie honeypots and ipset blocklists, performed full network forensics, and submitted structured threat intelligence to CISA and IC3",
         "Deployed Terraform-managed infrastructure and multi-WAN failover firewalls (Cisco, SonicWall, Barracuda); applied STRIDE threat modeling to client architecture reviews and onboarding workflows",
-        "Performed SQL Server administration including database migrations during M&A activity, resolving access, policy, and identity conflicts"
+        "Contained a live ransomware intrusion at an accounting client — isolated the infection, restored from air-gapped backups with ~15 minutes of data loss, and returned the firm to full operation the same day. No ransom paid."
       ]
     },
     {
