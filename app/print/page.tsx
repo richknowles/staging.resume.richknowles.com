@@ -224,7 +224,7 @@ export default function PrintPage() {
         <h3>Software Development & Innovation:</h3>
         <ul>
           <li>
-            <strong>Architected AJ Sender: Professional WhatsApp bulk messaging platform with 2.2 MILLION LINES OF CODE</strong><br/>
+            <strong>Architected AJ Sender: Professional WhatsApp bulk messaging platform , designed and shipped end-to-end</strong><br/>
             Production-ready full-stack application: React, TypeScript, Node.js, Docker deployment. Features: CSV contact upload,
             campaign management dashboard, real-time analytics, dark/light mode UI. SSL support, automated monitoring, scheduled backups,
             security (CORS, rate limiting). One-command installation with automated system optimization scripts.
@@ -281,7 +281,7 @@ export default function PrintPage() {
           PIONEERED CERTIFIED FACTORY IMAGE (CFI) PROGRAM — INDUSTRY FIRST
         </div>
         <ul>
-          <li><strong>Founded and led Motorola&apos;s Desktop Architecture team, creating the world&apos;s FIRST Certified Factory Image (CFI) program</strong></li>
+          <li><strong>Founded and led Motorola&apos;s Desktop Architecture team, creating the industry&apos;s pioneering Certified Factory Image (CFI) program</strong></li>
           <li>Revolutionized enterprise deployment by partnering with Dell, HP, and Lenovo to pre-install Motorola&apos;s validated system images <strong>at the factory</strong> before shipping</li>
           <li>Eliminated the operational bottleneck of manually imaging thousands of machines after delivery</li>
           <li>Saved <strong>millions in labor costs and deployment time</strong> across global operations</li>
